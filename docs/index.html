@@ -1,917 +1,551 @@
 <!DOCTYPE html>
 <html>
+ <head>
+  <title>
+   Medical AI Datasheet (MAIDS)
+  </title>
+  <meta charset="utf-8"/>
+  <meta content="IE=EDGE" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <link href="./css/style.css" rel="stylesheet"/>
+  <link href="./css/help.css" rel="stylesheet"/>
+  <link href="./css/lightbox.css" rel="stylesheet"/>
+  <link href="./css/slick.css" rel="stylesheet"/>
+  <link href="./css/dt.css" rel="stylesheet"/>
+  <script src="./js/social.js">
+  </script>
+  <script src="./js/lightbox-plus-jquery.js">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js">
+  </script>
+  <script src="./js/hbhelpers.js">
+  </script>
+  <script src="./js/hbmaids.js">
+  </script>
+  <script src="./js/slick.js">
+  </script>
+  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js">
+  </script>
+  <script src="./js/dt.js">
+  </script>
+ </head>
+ <body>
+  <div id="emptyHandle">
+  </div>
+  <script type="text/javascript">
+   var template = Handlebars.templates['maids']
 
-<head>
-    <title>
-        Medical AI Datasheet (MAIDS)
-    </title>
-    <meta charset="utf-8" />
-    <meta content="IE=EDGE" http-equiv="X-UA-Compatible" />
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <link href="./css/style.css" rel="stylesheet" />
-    <link href="./css/help.css" rel="stylesheet" />
-    <link href="./css/lightbox.css" rel="stylesheet" />
-    <link href="./css/slick.css" rel="stylesheet" />
-    <link href="./css/dt.css" rel="stylesheet" />
-    <script src="./js/social.js">
-    </script>
-    <script src="./js/lightbox-plus-jquery.js">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js">
-    </script>
-    <script src="./js/hbhelpers.js">
-    </script>
-    <script src="./js/hbmaids.js">
-    </script>
-    <script src="./js/slick.js">
-    </script>
-    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js">
-    </script>
-    <script src="./js/dt.js">
-    </script>
-</head>
-
-<body>
-    <div id="emptyHandle">
-    </div>
-    <script type="text/javascript">
-        var template = Handlebars.templates['maids']
-
-        var filledHandle = template({
-            title: "A very interesting title indeed!",
-            repository: "https://github.com/PERSIMUNE-Health-Informatics/MAIDS-Template",
-            authors: [{
-                author: {
-                    firstnames: "John",
-                    lastname: "Doe",
-                    email: "john.doe@somedomain.com",
-                },
-            }, {
-                author: {
-                    firstnames: "Jane",
-                    lastname: "Doe",
-                    email: "jane.doe@somedomain.com",
-                },
-            }, ],
-            scores: {
-                document: {
-                    score: "1",
-                    comment: "This is a basic description of the dataset and missing the necessary statistical description to generate a decent synthetic version.",
-                    evaluator: {
-                        entityType: "person",
-                        entityName: "John Doe",
-                        contactName: "John Doe",
-                        contactEmail: "john.doe@somedomain.com",
-                    },
-                },
-                fairness: {
-                    score: "?",
-                    comment: "No committee has evaluated this dataset.",
-                    evaluator: {
-                        entityType: "None",
-                        entityName: "None",
-                        contactName: "None",
-                        contactEmail: "None",
-                    },
-                },
-                magnitude: {
-                    score: "0",
-                    comment: "This example dataset contains no data.",
-                    evaluator: {
-                        entityType: "person",
-                        entityName: "John Doe",
-                        contactName: "John Doe",
-                        contactEmail: "john.doe@somedomain.com",
-                    },
-                },
-                synthetic: {
-                    score: "E",
-                    comment: "No synthetic data or scripts to generate such data are included.",
-                    evaluator: {
-                        entityType: "person",
-                        entityName: "John Doe",
-                        contactName: "John Doe",
-                        contactEmail: "john.doe@somedomain.com",
-                    },
-                },
-            },
-            thematic: {
-                filename: "thematic.png",
-            },
-            abstract: "Abstract: This is an example MAIDS document describing an empty dataset. It has been designed for publication within the MAIDS template on github.",
-            usecases: [{
-                usecase: "An example or a short use case statement.",
-            }, {
-                usecase: "Another example.",
-            }, {
-                usecase: "Include as many use cases as you would like.",
-            }, {
-                usecase: "A good practice is to itemize the uses identified by the main research questions.",
-            }, ],
-            research: {
-                main: "This is where you should describe the main research questions for which the dataset was created to answer. Please make it as long as it needs to be and refer to the figures. The use cases above should summarize these questions succinctly.",
-                secondary: "This is where you should describe the research questions that could be answered by this dataset even if it wasn't created for this exact purpose. The use cases above should summarize these questions succinctly."
-            },
-            figures: [{
-                figure: {
-                    filename: "example1.jpg",
-                    title: "Figure 1. First example",
-                    legend: "Figure 1's legend."
-                },
-            }, {
-                figure: {
-                    filename: "example2.jpg",
-                    title: "Figure 2. Second example",
-                    legend: "Figure 2's legend."
-                },
-            }, {
-                figure: {
-                    filename: "example3.jpg",
-                    title: "Figure 3. Third example",
-                    legend: "Figure 3's legend."
-                },
-            }, {
-                figure: {
-                    filename: "example4.jpg",
-                    title: "Figure 4. Fourth example",
-                    legend: "Figure 4's legend."
-                },
-            }, {
-                figure: {
-                    filename: "example5.jpg",
-                    title: "Figure 5. Fifth example",
-                    legend: "Figure 5's legend."
-                },
-            }, {
-                figure: {
-                    filename: "example6.jpg",
-                    title: "Figure 6. Sixth example",
-                    legend: "Figure 6's legend."
-                },
-            }, ],
-            subsetAssociations: {
-                filename: "datasetassociations.jpg",
-                legend: "An example of how 3 different subsets are connected by a patient identifier. The aspect ratio is 5 to 3.5.",
-            },
-            version: {
-                scores: "1",
-                description: "1",
-                questionnaire: "1",
-                subsets: "1",
-                synthetic: "1",
-            },
-            provenance: {
-                template: {
-                    commit: "9e9c6de",
-                    tag: "v0.1-alpha",
-                },
-                specification: {
-                    commit: "7581946",
-                    tag: "v0.1-alpha",
-                },
-            },
-            categories: [{
-                category: {
-                    id: "1",
-                    name: "Motivation",
-                    code: "M",
-                    description: "The questions in this category are primarily intended to encourage dataset creators to clearly articulate their reasons for creating the dataset and to promote transparency about funding interests.",
-                    entries: [{
-                        entry: {
-                            id: "1",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "For what purpose was the dataset created?",
-                            help: "Was there a specific task in mind? Was there a specific gap that needed to be filled? Please provide a description."
-                        }
-                    }, {
-                        entry: {
-                            id: "2",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Who created the dataset (e.g., which team, research group) and on behalf of which entity (e.g., company, institution, organization)?",
-                            help: "None"
-                        }
-                    }, {
-                        entry: {
-                            id: "3",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Who funded the creation of the dataset?",
-                            help: "If there is an associated grant, please provide the name of the grantor and the grant name and number."
-                        }
-                    }, {
-                        entry: {
-                            id: "4",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Any other comments?",
-                            help: "None"
-                        }
-                    }, ]
-                }
-            }, {
-                category: {
-                    id: "2",
-                    name: "Composition",
-                    code: "C",
-                    description: "Most of these questions are intended to provide dataset consumers with the information they need to make informed decisions about using the dataset for specific tasks. The answers to some of these questions reveal information about compliance with the EU’s General Data Protection Regulation (GDPR) or comparable regulations in other jurisdictions.",
-                    entries: [{
-                        entry: {
-                            id: "1",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "What do the instances that comprise the dataset represent (e.g., samples, images, people)?",
-                            help: "Are there multiple types of instances (e.g., samples, images, and people), interactions (e.g., nodes and edges), resolutions (e.g., genetic data, single cell expression vs. tissue expression, cell counts, different image technologies, etc.)? Please provide a description."
-                        }
-                    }, {
-                        entry: {
-                            id: "2",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "How many instances are there in total?",
-                            help: "Provide an exact integer value for each type mentioned in question C1."
-                        }
-                    }, {
-                        entry: {
-                            id: "3",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Does the dataset contain all possible instances or is it a sample (not necessarily random) of instances from a larger set?",
-                            help: "f the dataset is a sample, then what is the larger set? Is the sample representative of the larger set (e.g., geographic coverage)? If so, please describe how this representativeness was validated/verified. If it is not representative of the larger set, please describe why not (e.g., an active decision to cover a more diverse range of instances, because instances were withheld or unavailable)."
-                        }
-                    }, {
-                        entry: {
-                            id: "4",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "What data does each instance consist of?",
-                            help: "“Raw” data (e.g., unprocessed text or images) or features? In either case, please provide a description."
-                        }
-                    }, {
-                        entry: {
-                            id: "5",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Is there a label, target, or outcome (e.g., mortality) associated with each instance?",
-                            help: "If so, please provide a description and indicate its actual presence within the dataset or whether it is represented by a proxy or compounded (e.g., a multi-cause event)."
-                        }
-                    }, {
-                        entry: {
-                            id: "6",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Is any information missing from individual instances?",
-                            help: "If so, please provide a description, explaining why this information is missing (e.g., because it was unavailable). This does not include intentionally removed information, but might include, e.g., redacted text."
-                        }
-                    }, {
-                        entry: {
-                            id: "7",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Are relationships between individual instances made explicit (e.g., familial links, or samples derived from the same patient or same exposure)?",
-                            help: "If so, please describe how these relationships are made explicit."
-                        }
-                    }, {
-                        entry: {
-                            id: "8",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Are there recommended data splits (e.g., training, development/validation, testing)?",
-                            help: "If so, please provide a description of these splits, explaining the rationale behind them."
-                        }
-                    }, {
-                        entry: {
-                            id: "9",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Are there any errors, sources of noise, or redundancies in the dataset?",
-                            help: "If so, please provide a description."
-                        }
-                    }, {
-                        entry: {
-                            id: "10",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Is the dataset self-contained, or does it link to or otherwise rely on external resources (e.g., websites, public databases, other datasets and/or private silos)?",
-                            help: "If it links to or relies on external resources, a) are there guarantees that they will exist, and remain constant, over time; b) are there official archival versions of the complete dataset (i.e., including the external resources as they existed at the time the dataset was created); c) are there any restrictions (e.g., licenses, fees) associated with any of the external resources that might apply to a future user? Please provide descriptions of all external resources and any restrictions associated with them, as well as links or other access points, as appropriate."
-                        }
-                    }, {
-                        entry: {
-                            id: "11",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Does the dataset contain data that might be considered confidential (e.g., data that is protected by legal privilege or by doctor-patient confidentiality, data that includes the content of individuals’ non-public communications)?",
-                            help: "If so, please provide a description."
-                        }
-                    }, {
-                        entry: {
-                            id: "12",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Does the dataset contain data that, if viewed directly, might be offensive, insulting, threatening, or might otherwise cause anxiety?",
-                            help: "If so, please describe why."
-                        }
-                    }, {
-                        entry: {
-                            id: "13",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Does the dataset not relate to people (e.g., animals, cell lines, environment)?",
-                            help: "A short answer is sufficient. If no relation to people, you may skip the remaining questions in this section."
-                        }
-                    }, {
-                        entry: {
-                            id: "14",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Does the dataset identify any subpopulations (e.g., by age, gender, etc.)?",
-                            help: "If so, please describe how these subpopulations are identified and provide a description of their respective distributions within the dataset."
-                        }
-                    }, {
-                        entry: {
-                            id: "15",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Is it possible to identify individuals (i.e., one or more natural persons), either directly or indirectly (i.e., in combination with other data) from the dataset?",
-                            help: "If so, please describe how."
-                        }
-                    }, {
-                        entry: {
-                            id: "16",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Does the dataset contain data that might be considered sensitive in any way (e.g., data that reveals racial or ethnic origins, sexual orientations, religious beliefs, political opinions or union memberships, or locations; financial or health data; biometric or genetic data; forms of government identification, such as social security numbers; criminal history)?",
-                            help: "If so, please provide a description."
-                        }
-                    }, {
-                        entry: {
-                            id: "17",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Any other comments?",
-                            help: "None"
-                        }
-                    }, ]
-                }
-            }, {
-                category: {
-                    id: "3",
-                    name: "Collection Process",
-                    code: "L",
-                    description: "If possible, dataset creators should read through these questions prior to any data collection to flag potential issues and then provide answers once collection is complete. In addition to the goals of the prior category, the answers to questions here may provide information that allow others to reconstruct the dataset without access to it.",
-                    entries: [{
-                        entry: {
-                            id: "1",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "How was the data associated with each instance acquired?",
-                            help: "Was the data directly observable (e.g., raw text, instrument measurements), reported by subjects/physicians (e.g., survey responses), or indirectly inferred/derived from other data (e.g., part-of-speech tags, model-based guesses, scores, etc.)? If data was reported by subjects or indirectly inferred/derived from other data, was the data validated/verified? If so, please describe how."
-                        }
-                    }, {
-                        entry: {
-                            id: "2",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "What mechanisms or procedures were used to collect the data (e.g., hardware apparatus or sensor, manual human curation, software program, software API)?",
-                            help: "How were these mechanisms or procedures validated?"
-                        }
-                    }, {
-                        entry: {
-                            id: "3",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "If the dataset is a sample from a larger set, what was the sampling strategy (e.g., deterministic, probabilistic with specific sampling probabilities)?",
-                            help: "Please describe."
-                        }
-                    }, {
-                        entry: {
-                            id: "4",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: " Who was involved in the data collection process (e.g., students, crowdworkers, contractors) and how were they compensated (e.g., salaried, immaterial through prizes / authorship / etc) and how much (e.g., according to competitive scales mandated by [insert body or institution])?",
-                            help: "None"
-                        }
-                    }, {
-                        entry: {
-                            id: "5",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Over what timeframe was the data collected?",
-                            help: "Does this timeframe match the creation timeframe of the data associated with the instances (e.g., recent data from old biobanked samples, or recent data dump from a 5-year-old registry)? If not, please describe the time frame in which the data associated with the instances was created."
-                        }
-                    }, {
-                        entry: {
-                            id: "6",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Were any ethical review processes conducted (e.g., by an institutional review board)?",
-                            help: "If so, please provide a description of these review processes, including the outcomes, as well as a link or other access point to any supporting documentation."
-                        }
-                    }, {
-                        entry: {
-                            id: "7",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Does the dataset not relate to people (e.g., animals, cell lines, environment)?",
-                            help: "A short answer is sufficient. If no relation to people, you may skip the remaining questions in this section."
-                        }
-                    }, {
-                        entry: {
-                            id: "8",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Did you collect the data from the individuals in question directly, or obtain it via third parties or other sources (e.g., websites)?",
-                            help: "Please explain."
-                        }
-                    }, {
-                        entry: {
-                            id: "9",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Were the individuals in question notified about the data collection?",
-                            help: "If so, please describe (or show with screenshots or other information) how notice was provided, and provide a link or other access point to, or otherwise reproduce, the exact language of the notification itself."
-                        }
-                    }, {
-                        entry: {
-                            id: "10",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Did the individuals in question consent to the collection and use of their data?",
-                            help: "If so, please describe (or show with screenshots or other information) how consent was requested and provided, and provide a link or other access point to, or otherwise reproduce, the exact language to which the individuals consented."
-                        }
-                    }, {
-                        entry: {
-                            id: "11",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: " If consent was obtained, were the consenting individuals provided with a mechanism to revoke their consent in the future or for certain uses?",
-                            help: "If so, please provide a description, as well as a link or other access point to the mechanism (if appropriate)."
-                        }
-                    }, {
-                        entry: {
-                            id: "12",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Has an analysis of the potential impact of the dataset and its use on data subjects (e.g., a data protection impact analysis) been conducted?",
-                            help: "If so, please provide a description of this analysis, including the outcomes, as well as a link or other access point to any supporting documentation."
-                        }
-                    }, {
-                        entry: {
-                            id: "13",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Any other comments?",
-                            help: "None"
-                        }
-                    }, ]
-                }
-            }, {
-                category: {
-                    id: "4",
-                    name: "Preprocessing, Cleaning, Labling",
-                    code: "P",
-                    description: "If possible, dataset creators should read through these questions prior to any preprocessing, cleaning, or labeling and then provide answers once these tasks are complete. The questions in this category are intended to provide dataset consumers with the information they need to determine whether the “raw” data has been processed in ways that are compatible with their chosen tasks.",
-                    entries: [{
-                        entry: {
-                            id: "1",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Was any preprocessing/cleaning/labeling of the data done (e.g., discretization or bucketing, tokenization, part-of-speech tagging, SIFT feature extraction, removal of instances, processing of missing values)?",
-                            help: "If so, please provide a description. If not, you may skip the remainder of the questions in this section."
-                        }
-                    }, {
-                        entry: {
-                            id: "2",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Was the “raw” data saved in addition to the preprocessed/cleaned/labeled data (e.g., to support unanticipated future uses)?",
-                            help: "If so, is it available and needs to be done to gain access? If open without restriction then please describe a means to access this “raw” data."
-                        }
-                    }, {
-                        entry: {
-                            id: "3",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Is the software used to preprocess/clean/label the instances available?",
-                            help: "If so, please provide a link or other access point and describe with enough detail so that others might reproduce it. If a custom script was used will you include it within the MAIDS repository or otherwise make it available?"
-                        }
-                    }, {
-                        entry: {
-                            id: "4",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Any other comments?",
-                            help: "None"
-                        }
-                    }, ]
-                }
-            }, {
-                category: {
-                    id: "5",
-                    name: "Uses",
-                    code: "U",
-                    description: "These questions are intended to encourage dataset creators to reflect on the tasks for which the dataset should and should not be used. By explicitly highlighting these tasks, dataset creators can help dataset consumers to make informed decisions, thereby avoiding potential risks or harm.",
-                    entries: [{
-                        entry: {
-                            id: "1",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Has the dataset been used for any tasks already?",
-                            help: "hers determine the value of this dataset by example."
-                        }
-                    }, {
-                        entry: {
-                            id: "2",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Is there a repository that links to any or all papers or systems that use the dataset?",
-                            help: "If so, please provide a link or other access point. Will you compile such a list and make it available in the MAIDS repository?"
-                        }
-                    }, {
-                        entry: {
-                            id: "3",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "What (other) tasks could the dataset be used for?",
-                            help: "Please provide as much inspiration as you can. Distinguish between tasks the dataset is ideal for versus those tasks where the dataset is not entirely suited. Describe why the dataset might not be suitable "
-                        }
-                    }, {
-                        entry: {
-                            id: "4",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Is there anything about the composition of the dataset or the way it was collected and preprocessed/cleaned/labeled that might impact future uses?",
-                            help: "For example, is there anything that a future user might need to know to avoid uses that could result in unfair treatment of individuals or groups (e.g., stereotyping, quality of service issues) or other undesirable harms (e.g., financial harms, legal risks) If so, please provide a description. Is there anything a future user could do to mitigate these undesirable harms?"
-                        }
-                    }, {
-                        entry: {
-                            id: "5",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Are there tasks for which the dataset should not be used?",
-                            help: "If so, please provide a description."
-                        }
-                    }, {
-                        entry: {
-                            id: "6",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Any other comments?",
-                            help: "None"
-                        }
-                    }, ]
-                }
-            }, {
-                category: {
-                    id: "6",
-                    name: "Distribution",
-                    code: "D",
-                    description: "Dataset creators should provide answers to these questions prior to distributing the dataset either internally within the entity on behalf of which the dataset was created or externally to third parties.",
-                    entries: [{
-                        entry: {
-                            id: "1",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Will the dataset be distributed to third parties outside of the entity (e.g., company, institution, organization) on behalf of which the dataset was created",
-                            help: "If so, please provide a description. If not, then disregard the rest of the questions."
-                        }
-                    }, {
-                        entry: {
-                            id: "2",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "How will the dataset be distributed (e.g., tarball on website, API, GitHub)?",
-                            help: "Does the dataset have a digital object identifier (DOI)?"
-                        }
-                    }, {
-                        entry: {
-                            id: "3",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "When will the dataset be distributed?",
-                            help: "A cautious response is more useful than an optimistic one."
-                        }
-                    }, {
-                        entry: {
-                            id: "4",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Will the dataset be distributed under a copyright or other intellectual property (IP) license, and/or under applicable terms of use (ToU)?",
-                            help: "If so, please describe this license and/or ToU, and provide a link or other access point to, or otherwise reproduce, any relevant licensing terms or ToU, as well as any fees associated with these restrictions."
-                        }
-                    }, {
-                        entry: {
-                            id: "5",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Have any third-parties imposed IP-based or other restrictions on the data associated with the instances?",
-                            help: "If so, please describe these restrictions, and provide a link or other access point to, or otherwise reproduce, any relevant licensing terms, as well as any fees associated with these restrictions."
-                        }
-                    }, {
-                        entry: {
-                            id: "6",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Do any export controls or other regulatory restrictions apply to the dataset or to individual instances?",
-                            help: "If so, please describe these restrictions, and provide a link or other access point to, or otherwise reproduce, any supporting documentation."
-                        }
-                    }, {
-                        entry: {
-                            id: "7",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Any other comments?",
-                            help: "None"
-                        }
-                    }, ]
-                }
-            }, {
-                category: {
-                    id: "7",
-                    name: "Maintenance",
-                    code: "T",
-                    description: "As with the previous category, dataset creators should provide answers to these questions prior to distributing the dataset. These questions are intended to encourage dataset creators to plan for dataset maintenance and communicate this plan with dataset consumers.",
-                    entries: [{
-                        entry: {
-                            id: "1",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Who is supporting/hosting/maintaining the dataset?",
-                            help: "Please be as thorough as possible."
-                        }
-                    }, {
-                        entry: {
-                            id: "2",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "How can the owner/curator/manager of the dataset be contacted (e.g., email address)?",
-                            help: "None"
-                        }
-                    }, {
-                        entry: {
-                            id: "3",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Is there an erratum?",
-                            help: "If so, please provide a link or other access point."
-                        }
-                    }, {
-                        entry: {
-                            id: "4",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Will the dataset be updated (e.g., to correct labeling errors, add new instances, delete instances)?",
-                            help: "If so, please describe how often, by whom, and how updates will be communicated to users (e.g., mailing list, GitHub)?"
-                        }
-                    }, {
-                        entry: {
-                            id: "5",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "If the dataset relates to people, are there applicable limits on the retention of the data associated with the instances (e.g., were individuals in question told that their data would be retained for a fixed period of time and then deleted)?",
-                            help: "If so, please describe these limits and explain how they will be enforced."
-                        }
-                    }, {
-                        entry: {
-                            id: "6",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Will older versions of the dataset continue to be supported/hosted/maintained?",
-                            help: "If so, please describe how. If not, please describe how its obsolescence will be communicated to users."
-                        }
-                    }, {
-                        entry: {
-                            id: "7",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "If others want to extend/augment/build on/contribute to the dataset, is there a mechanism for them to do so?",
-                            help: "If so, please provide a description. Will these contributions be validated/verified? If so, please describe how. If not, why not? Is there a process for communicating/distributing these contributions to other users? If so, please provide a description."
-                        }
-                    }, {
-                        entry: {
-                            id: "8",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Any other comments?",
-                            help: "None"
-                        }
-                    }, ]
-                }
-            }, ],
-            definitions: [{
-                definition: {
-                    id: "1",
-                    keyword: "A keyword",
-                    definition: "It means this.",
-                    link: "https://link.to.reference/material"
-                }
-            }, {
-                definition: {
-                    id: "2",
-                    keyword: "Another keyword",
-                    definition: "Another definition without an online reference.",
-                    link: ""
-                }
-            }, ],
-            subsets: [{
-                subset: {
-                    id: "1",
-                    name: "Example subset of tabular data",
-                    updated: "2021/03/01",
-                    modality: "TABULAR",
-                    format: "CSV",
-                    size: "0",
-                    featureCount: "1",
-                    parentid: "None",
-                    covmat: "No covariance matrix or any other similar data provided.",
-                    modsys: "No models, model systems, or any other statistical description provided.",
-                    purpose: "To provide an example specification for a tabular CSV file.",
-                    link: "",
-                    features: [{
-                        feature: {
-                            id: "1",
-                            date: "2021/03/01",
-                            name: "PID",
-                            values: "1..inf; int",
-                            meaningNaNullNone: "Not possible",
-                            meaningZero: "Not possible",
-                            meaningBlankVoid: "Not possible",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Pseudononymized patient identifier.",
-                            purpose: "Act as the primary identifier for joining subsets.",
-                            encoding: "None"
-                        }
-                    }, ]
-                }
-            }, {
-                subset: {
-                    id: "2",
-                    name: "Example of unstructured data in files",
-                    updated: "2021/03/01",
-                    modality: "FILES",
-                    format: "something",
-                    size: "0",
-                    featureCount: "0",
-                    parentid: "None",
-                    covmat: "No covariance matrix or any other similar data provided.",
-                    modsys: "No models, model systems, or any other statistical description provided.",
-                    purpose: "To provide an example specification for a folder containing many unstructured data files. Since there is no structure, no features are listed below. If there is a manifest, describe it within another subset and reference this subset as its parent.",
-                    link: "",
-                    features: []
-                }
-            }, {
-                subset: {
-                    id: "3",
-                    name: "A manifest of data files and their meta-data",
-                    updated: "2021/03/01",
-                    modality: "TABULAR",
-                    format: "XML",
-                    size: "0",
-                    featureCount: "3",
-                    parentid: "2",
-                    covmat: "Irrelevant",
-                    modsys: "Irrelevant",
-                    purpose: "To provide an example of how meta-data on a folder of files could be specified.",
-                    link: "",
-                    features: [{
-                        feature: {
-                            id: "1",
-                            date: "2021/03/01",
-                            name: "PID",
-                            values: "1..inf; int",
-                            meaningNaNullNone: "Not possible",
-                            meaningZero: "Not possible",
-                            meaningBlankVoid: "Not possible",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Pseudononymized patient identifier.",
-                            purpose: "Act as the primary identifier for joining subsets.",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "2",
-                            date: "2021/03/01",
-                            name: "Filename",
-                            values: "a-zA-Z; str",
-                            meaningNaNullNone: "NA",
-                            meaningZero: "NA",
-                            meaningBlankVoid: "NA",
-                            sparsity: "NA",
-                            mean: "NA",
-                            std: "NA",
-                            modality: "NA",
-                            median: "NA",
-                            iqr: "NA",
-                            parents: "NA",
-                            unit: "None",
-                            definition: "The filename",
-                            purpose: "Provide name of file",
-                            encoding: "NA"
-                        }
-                    }, {
-                        feature: {
-                            id: "3",
-                            date: "2021/03/01",
-                            name: "Some information",
-                            values: "1..inf; str",
-                            meaningNaNullNone: "NA",
-                            meaningZero: "NA",
-                            meaningBlankVoid: "NA",
-                            sparsity: "NA",
-                            mean: "NA",
-                            std: "NA",
-                            modality: "NA",
-                            median: "NA",
-                            iqr: "NA",
-                            parents: "NA",
-                            unit: "None",
-                            definition: "Some extra information unique to each file",
-                            purpose: "Why this information exists",
-                            encoding: "NA"
-                        }
-                    }, ]
-                }
-            }, ]
-        })
+        var filledHandle = template({ title:"Consciousness in neurocritical care cohort study",repository:"https://github.com/UltrathonOnline/MAIDS.U21-03.Consciousness",authors:[{author: {firstnames: "Daniel", lastname: "Kondziella", email: "Daniel.kondziella@regionh.dk",},},{author: {firstnames: "Moshgan", lastname: "Amiri", email: "Moshgan.amiri@regionh.dk",},},],scores:{ document: {score:"1",comment:"None",evaluator:{entityType:"None",entityName:"None",contactName:"None",contactEmail:"None",},},fairness: {score:"?",comment:"None",evaluator:{entityType:"None",entityName:"None",contactName:"None",contactEmail:"None",},},magnitude: {score:"2",comment:"None",evaluator:{entityType:"None",entityName:"None",contactName:"None",contactEmail:"None",},},synthetic: {score:"E",comment:"None",evaluator:{entityType:"None",entityName:"None",contactName:"None",contactEmail:"None",},}, },thematic:{ filename:"thematic.jpg", },abstract:"Research on consciousness is mainly based on patients suffering from chronic brain injury, while data regarding unresponsive patients with acute brain injury are sparse. As mentioned in the previous section, most deaths in an ICU population occur because of withdrawal of life-sustaining therapy. Reducing the risk for erroneous clinical prognostication is therefore crucial. There is a gap between the research on chronic patients and research based on unresponsive patients suffering from acute brain injury in the ICU. We established our database to be able to fill this gap. Our dataset was hence created to obtain a representative prospective database with systematic registration of clinical, laboratory and imaging data of unresponsive patients suffering from acute brain injury. The main purpose of the database is to identify important information predicting level of consciousness and outcome (acute and long-term) in these patients, which will help to optimize clinical decision-making.",usecases:[{usecase: "None",},],research:{main:"After acute brain injury, recovery of consciousness is the single most important factor for clinical outcome. Consciousness levels in clinically unresponsive patients are misdiagnosed in 15-20%, i.e. consciousness may be under- or overestimated, which has negative effects on clinical decision making in the intensive care unit (ICU). Thus, underestimation may lead to premature withdrawal of life-supporting therapy, whereas overestimation may lead to prolongation of futile treatment. Given that 7 out of 10 deaths in the ICU occur because of treatment withdrawal, accurate estimation of consciousness is crucial to save patients from poor medical decision making. Since 2015, we have systematically and rigorously registered data regarding clinical neurological exam (including detailed scoring of consciousness levels), laboratory investigations including structural brains scans (computed tomography and magnetic resonance imaging), electroencephalography (EEG), cerebrospinal fluid samples and other relevant exams during ICU admission. Furthermore, to obtain information on recovery after acute brain injury, we registered follow-up data at 3- and 12 months according to modified Rankin scale (mRS) and Glasgow outcome scale extended (GOS-E), or alternatively, the cause of death during ICU admission. As of January 2021, we have included 104 patients. Follow-up data at 3- and 12 months are available from 78 and 70 patients, respectively.",secondary:"1) Can machine learning algorithms recognize common signatures indicating good or poor outcome during ICU admission, in an inhomogeneous group of patients with acute brain injury, based on clinical and laboratory features which are missed by clinical routine evaluation?; 2)  Can machine learning algorithms assist clinicians in a more accurate decision-making regarding end-of-life decisions in the ICU?; 3)  Can machine learning algorithms predict outcome in unresponsive patients with acute brain injury at ICU discharge and 3 and 12 months later?; 4) Is there a subset of unresponsive patients with acute brain injury for whom AI evaluation is particularly helpful?; 5) Will such algorithms be a convenient and cost-efficient for the detection of preserved consciousness, prognostication and treatment of patients with acute brain injury?"},figures:[{figure: {filename:"Picture1.jpg",title:"Patient flow from enrollment through follow up",legend:"Patients (n=104) are included with measured clinical conscious score."},},],subsetAssociations:{filename: "subset.jpg",legend:"Eleven subsets linked by a pseudonymized patient identifier.",},version: { scores: "1", description: "1", questionnaire: "1", subsets: "1", synthetic: "1", },provenance: { template: { commit: "70198f", tag: "v0.2-alpha", }, specification: { commit: "758194", tag: "v0.1-alpha", }, },categories:[{category:{
+id:"1",
+name:"Motivation",
+code:"M",
+description:"The questions in this category are primarily intended to encourage dataset creators to clearly articulate their reasons for creating the dataset and to promote transparency about funding interests.",
+entries:[
+{entry: {id:"1", answer:"Research on consciousness is mainly based on patients suffering from chronic brain injury, while data regarding unresponsive patients with acute brain injury are sparse. As mentioned in the previous section, most deaths in an ICU population occur because of withdrawal of life-sustaining therapy. Reducing the risk for erroneous clinical prognostication is therefore crucial. There is a gap between the research on chronic patients and research based on unresponsive patients suffering from acute brain injury in the ICU. We established our database to be able to fill this gap. Our dataset was hence created to obtain a representative prospective database with systematic registration of clinical, laboratory and imaging data of unresponsive patients suffering from acute brain injury. The main purpose of the database is to identify important information predicting level of consciousness and outcome (acute and long-term) in these patients, which will help to optimize clinical decision-making.", by:"", on:"", question:"For what purpose was the dataset created?", help:"Was there a specific task in mind? Was there a specific gap that needed to be filled? Please provide a description."}},
+{entry: {id:"2", answer:"Daniel Kondziella, MD PhD FEBN Principal investigator of and project developer of CONNECT-ME Neurocentret, Rigshospitalet ", by:"", on:"", question:"Who created the dataset (e.g., which team, research group) and on behalf of which entity (e.g., company, institution, organization)?", help:"None"}},
+{entry: {id:"3", answer:"1) Copenhagen University 2) Offerfonden 3) Jens Juhl fonden 4) Rigshospitalets forskningspuljer", by:"", on:"", question:"Who funded the creation of the dataset?", help:"If there is an associated grant, please provide the name of the grantor and the grant name and number."}},
+{entry: {id:"4", answer:"All our data are derived from electronic medical records, thus if additional details are needed in the process, we will be able to retrieve these from validated records.", by:"", on:"", question:"Any other comments?", help:"None"}},
+]}},
+{category:{
+id:"2",
+name:"Composition",
+code:"C",
+description:"Most of these questions are intended to provide dataset consumers with the information they need to make informed decisions about using the dataset for specific tasks. The answers to some of these questions reveal information about compliance with the EU’s General Data Protection Regulation (GDPR) or comparable regulations in other jurisdictions.",
+entries:[
+{entry: {id:"1", answer:"None", by:"", on:"", question:"What do the instances that comprise the dataset represent (e.g., samples, images, people)?", help:"Are there multiple types of instances (e.g., samples, images, and people), interactions (e.g., nodes and edges), resolutions (e.g., genetic data, single cell expression vs. tissue expression, cell counts, different image technologies, etc.)? Please provide a description."}},
+{entry: {id:"2", answer:"None", by:"", on:"", question:"How many instances are there in total?", help:"Provide an exact integer value for each type mentioned in question C1."}},
+{entry: {id:"3", answer:"None", by:"", on:"", question:"Does the dataset contain all possible instances or is it a sample (not necessarily random) of instances from a larger set?", help:"f the dataset is a sample, then what is the larger set? Is the sample representative of the larger set (e.g., geographic coverage)? If so, please describe how this representativeness was validated/verified. If it is not representative of the larger set, please describe why not (e.g., an active decision to cover a more diverse range of instances, because instances were withheld or unavailable)."}},
+{entry: {id:"4", answer:"None", by:"", on:"", question:"What data does each instance consist of?", help:"“Raw” data (e.g., unprocessed text or images) or features? In either case, please provide a description."}},
+{entry: {id:"5", answer:"None", by:"", on:"", question:"Is there a label, target, or outcome (e.g., mortality) associated with each instance?", help:"If so, please provide a description and indicate its actual presence within the dataset or whether it is represented by a proxy or compounded (e.g., a multi-cause event)."}},
+{entry: {id:"6", answer:"None", by:"", on:"", question:"Is any information missing from individual instances?", help:"If so, please provide a description, explaining why this information is missing (e.g., because it was unavailable). This does not include intentionally removed information, but might include, e.g., redacted text."}},
+{entry: {id:"7", answer:"None", by:"", on:"", question:"Are relationships between individual instances made explicit (e.g., familial links, or samples derived from the same patient or same exposure)?", help:"If so, please describe how these relationships are made explicit."}},
+{entry: {id:"8", answer:"None", by:"", on:"", question:"Are there recommended data splits (e.g., training, development/validation, testing)?", help:"If so, please provide a description of these splits, explaining the rationale behind them."}},
+{entry: {id:"9", answer:"None", by:"", on:"", question:"Are there any errors, sources of noise, or redundancies in the dataset?", help:"If so, please provide a description."}},
+{entry: {id:"10", answer:"None", by:"", on:"", question:"Is the dataset self-contained, or does it link to or otherwise rely on external resources (e.g., websites, public databases, other datasets and/or private silos)?", help:"If it links to or relies on external resources, a) are there guarantees that they will exist, and remain constant, over time; b) are there official archival versions of the complete dataset (i.e., including the external resources as they existed at the time the dataset was created); c) are there any restrictions (e.g., licenses, fees) associated with any of the external resources that might apply to a future user? Please provide descriptions of all external resources and any restrictions associated with them, as well as links or other access points, as appropriate."}},
+{entry: {id:"11", answer:"None", by:"", on:"", question:"Does the dataset contain data that might be considered confidential (e.g., data that is protected by legal privilege or by doctor-patient confidentiality, data that includes the content of individuals’ non-public communications)?", help:"If so, please provide a description."}},
+{entry: {id:"12", answer:"None", by:"", on:"", question:"Does the dataset contain data that, if viewed directly, might be offensive, insulting, threatening, or might otherwise cause anxiety?", help:"If so, please describe why."}},
+{entry: {id:"13", answer:"None", by:"", on:"", question:"Does the dataset not relate to people (e.g., animals, cell lines, environment)?", help:"A short answer is sufficient. If no relation to people, you may skip the remaining questions in this section."}},
+{entry: {id:"14", answer:"None", by:"", on:"", question:"Does the dataset identify any subpopulations (e.g., by age, gender, etc.)?", help:"If so, please describe how these subpopulations are identified and provide a description of their respective distributions within the dataset."}},
+{entry: {id:"15", answer:"None", by:"", on:"", question:"Is it possible to identify individuals (i.e., one or more natural persons), either directly or indirectly (i.e., in combination with other data) from the dataset?", help:"If so, please describe how."}},
+{entry: {id:"16", answer:"None", by:"", on:"", question:"Does the dataset contain data that might be considered sensitive in any way (e.g., data that reveals racial or ethnic origins, sexual orientations, religious beliefs, political opinions or union memberships, or locations; financial or health data; biometric or genetic data; forms of government identification, such as social security numbers; criminal history)?", help:"If so, please provide a description."}},
+{entry: {id:"17", answer:"None", by:"", on:"", question:"Any other comments?", help:"None"}},
+]}},
+{category:{
+id:"3",
+name:"Collection Process",
+code:"L",
+description:"If possible, dataset creators should read through these questions prior to any data collection to flag potential issues and then provide answers once collection is complete. In addition to the goals of the prior category, the answers to questions here may provide information that allow others to reconstruct the dataset without access to it.",
+entries:[
+{entry: {id:"1", answer:"None", by:"", on:"", question:"How was the data associated with each instance acquired?", help:"Was the data directly observable (e.g., raw text, instrument measurements), reported by subjects/physicians (e.g., survey responses), or indirectly inferred/derived from other data (e.g., part-of-speech tags, model-based guesses, scores, etc.)? If data was reported by subjects or indirectly inferred/derived from other data, was the data validated/verified? If so, please describe how."}},
+{entry: {id:"2", answer:"None", by:"", on:"", question:"What mechanisms or procedures were used to collect the data (e.g., hardware apparatus or sensor, manual human curation, software program, software API)?", help:"How were these mechanisms or procedures validated?"}},
+{entry: {id:"3", answer:"None", by:"", on:"", question:"If the dataset is a sample from a larger set, what was the sampling strategy (e.g., deterministic, probabilistic with specific sampling probabilities)?", help:"Please describe."}},
+{entry: {id:"4", answer:"None", by:"", on:"", question:" Who was involved in the data collection process (e.g., students, crowdworkers, contractors) and how were they compensated (e.g., salaried, immaterial through prizes / authorship / etc) and how much (e.g., according to competitive scales mandated by [insert body or institution])?", help:"None"}},
+{entry: {id:"5", answer:"None", by:"", on:"", question:"Over what timeframe was the data collected?", help:"Does this timeframe match the creation timeframe of the data associated with the instances (e.g., recent data from old biobanked samples, or recent data dump from a 5-year-old registry)? If not, please describe the time frame in which the data associated with the instances was created."}},
+{entry: {id:"6", answer:"None", by:"", on:"", question:"Were any ethical review processes conducted (e.g., by an institutional review board)?", help:"If so, please provide a description of these review processes, including the outcomes, as well as a link or other access point to any supporting documentation."}},
+{entry: {id:"7", answer:"None", by:"", on:"", question:"Does the dataset not relate to people (e.g., animals, cell lines, environment)?", help:"A short answer is sufficient. If no relation to people, you may skip the remaining questions in this section."}},
+{entry: {id:"8", answer:"None", by:"", on:"", question:"Did you collect the data from the individuals in question directly, or obtain it via third parties or other sources (e.g., websites)?", help:"Please explain."}},
+{entry: {id:"9", answer:"None", by:"", on:"", question:"Were the individuals in question notified about the data collection?", help:"If so, please describe (or show with screenshots or other information) how notice was provided, and provide a link or other access point to, or otherwise reproduce, the exact language of the notification itself."}},
+{entry: {id:"10", answer:"None", by:"", on:"", question:"Did the individuals in question consent to the collection and use of their data?", help:"If so, please describe (or show with screenshots or other information) how consent was requested and provided, and provide a link or other access point to, or otherwise reproduce, the exact language to which the individuals consented."}},
+{entry: {id:"11", answer:"None", by:"", on:"", question:" If consent was obtained, were the consenting individuals provided with a mechanism to revoke their consent in the future or for certain uses?", help:"If so, please provide a description, as well as a link or other access point to the mechanism (if appropriate)."}},
+{entry: {id:"12", answer:"None", by:"", on:"", question:"Has an analysis of the potential impact of the dataset and its use on data subjects (e.g., a data protection impact analysis) been conducted?", help:"If so, please provide a description of this analysis, including the outcomes, as well as a link or other access point to any supporting documentation."}},
+{entry: {id:"13", answer:"None", by:"", on:"", question:"Any other comments?", help:"None"}},
+]}},
+{category:{
+id:"4",
+name:"Preprocessing, Cleaning, Labling",
+code:"P",
+description:"If possible, dataset creators should read through these questions prior to any preprocessing, cleaning, or labeling and then provide answers once these tasks are complete. The questions in this category are intended to provide dataset consumers with the information they need to determine whether the “raw” data has been processed in ways that are compatible with their chosen tasks.",
+entries:[
+{entry: {id:"1", answer:"None", by:"", on:"", question:"Was any preprocessing/cleaning/labeling of the data done (e.g., discretization or bucketing, tokenization, part-of-speech tagging, SIFT feature extraction, removal of instances, processing of missing values)?", help:"If so, please provide a description. If not, you may skip the remainder of the questions in this section."}},
+{entry: {id:"2", answer:"None", by:"", on:"", question:"Was the “raw” data saved in addition to the preprocessed/cleaned/labeled data (e.g., to support unanticipated future uses)?", help:"If so, is it available and needs to be done to gain access? If open without restriction then please describe a means to access this “raw” data."}},
+{entry: {id:"3", answer:"None", by:"", on:"", question:"Is the software used to preprocess/clean/label the instances available?", help:"If so, please provide a link or other access point and describe with enough detail so that others might reproduce it. If a custom script was used will you include it within the MAIDS repository or otherwise make it available?"}},
+{entry: {id:"4", answer:"None", by:"", on:"", question:"Any other comments?", help:"None"}},
+]}},
+{category:{
+id:"5",
+name:"Uses",
+code:"U",
+description:"These questions are intended to encourage dataset creators to reflect on the tasks for which the dataset should and should not be used. By explicitly highlighting these tasks, dataset creators can help dataset consumers to make informed decisions, thereby avoiding potential risks or harm.",
+entries:[
+{entry: {id:"1", answer:"None", by:"", on:"", question:"Has the dataset been used for any tasks already?", help:"hers determine the value of this dataset by example."}},
+{entry: {id:"2", answer:"None", by:"", on:"", question:"Is there a repository that links to any or all papers or systems that use the dataset?", help:"If so, please provide a link or other access point. Will you compile such a list and make it available in the MAIDS repository?"}},
+{entry: {id:"3", answer:"None", by:"", on:"", question:"What (other) tasks could the dataset be used for?", help:"Please provide as much inspiration as you can. Distinguish between tasks the dataset is ideal for versus those tasks where the dataset is not entirely suited. Describe why the dataset might not be suitable "}},
+{entry: {id:"4", answer:"None", by:"", on:"", question:"Is there anything about the composition of the dataset or the way it was collected and preprocessed/cleaned/labeled that might impact future uses?", help:"For example, is there anything that a future user might need to know to avoid uses that could result in unfair treatment of individuals or groups (e.g., stereotyping, quality of service issues) or other undesirable harms (e.g., financial harms, legal risks) If so, please provide a description. Is there anything a future user could do to mitigate these undesirable harms?"}},
+{entry: {id:"5", answer:"None", by:"", on:"", question:"Are there tasks for which the dataset should not be used?", help:"If so, please provide a description."}},
+{entry: {id:"6", answer:"None", by:"", on:"", question:"Any other comments?", help:"None"}},
+]}},
+{category:{
+id:"6",
+name:"Distribution",
+code:"D",
+description:"Dataset creators should provide answers to these questions prior to distributing the dataset either internally within the entity on behalf of which the dataset was created or externally to third parties.",
+entries:[
+{entry: {id:"1", answer:"None", by:"", on:"", question:"Will the dataset be distributed to third parties outside of the entity (e.g., company, institution, organization) on behalf of which the dataset was created", help:"If so, please provide a description. If not, then disregard the rest of the questions."}},
+{entry: {id:"2", answer:"None", by:"", on:"", question:"How will the dataset be distributed (e.g., tarball on website, API, GitHub)?", help:"Does the dataset have a digital object identifier (DOI)?"}},
+{entry: {id:"3", answer:"None", by:"", on:"", question:"When will the dataset be distributed?", help:"A cautious response is more useful than an optimistic one."}},
+{entry: {id:"4", answer:"None", by:"", on:"", question:"Will the dataset be distributed under a copyright or other intellectual property (IP) license, and/or under applicable terms of use (ToU)?", help:"If so, please describe this license and/or ToU, and provide a link or other access point to, or otherwise reproduce, any relevant licensing terms or ToU, as well as any fees associated with these restrictions."}},
+{entry: {id:"5", answer:"None", by:"", on:"", question:"Have any third-parties imposed IP-based or other restrictions on the data associated with the instances?", help:"If so, please describe these restrictions, and provide a link or other access point to, or otherwise reproduce, any relevant licensing terms, as well as any fees associated with these restrictions."}},
+{entry: {id:"6", answer:"None", by:"", on:"", question:"Do any export controls or other regulatory restrictions apply to the dataset or to individual instances?", help:"If so, please describe these restrictions, and provide a link or other access point to, or otherwise reproduce, any supporting documentation."}},
+{entry: {id:"7", answer:"None", by:"", on:"", question:"Any other comments?", help:"None"}},
+]}},
+{category:{
+id:"7",
+name:"Maintenance",
+code:"T",
+description:"As with the previous category, dataset creators should provide answers to these questions prior to distributing the dataset. These questions are intended to encourage dataset creators to plan for dataset maintenance and communicate this plan with dataset consumers.",
+entries:[
+{entry: {id:"1", answer:"None", by:"", on:"", question:"Who is supporting/hosting/maintaining the dataset?", help:"Please be as thorough as possible."}},
+{entry: {id:"2", answer:"None", by:"", on:"", question:"How can the owner/curator/manager of the dataset be contacted (e.g., email address)?", help:"None"}},
+{entry: {id:"3", answer:"None", by:"", on:"", question:"Is there an erratum?", help:"If so, please provide a link or other access point."}},
+{entry: {id:"4", answer:"None", by:"", on:"", question:"Will the dataset be updated (e.g., to correct labeling errors, add new instances, delete instances)?", help:"If so, please describe how often, by whom, and how updates will be communicated to users (e.g., mailing list, GitHub)?"}},
+{entry: {id:"5", answer:"None", by:"", on:"", question:"If the dataset relates to people, are there applicable limits on the retention of the data associated with the instances (e.g., were individuals in question told that their data would be retained for a fixed period of time and then deleted)?", help:"If so, please describe these limits and explain how they will be enforced."}},
+{entry: {id:"6", answer:"None", by:"", on:"", question:"Will older versions of the dataset continue to be supported/hosted/maintained?", help:"If so, please describe how. If not, please describe how its obsolescence will be communicated to users."}},
+{entry: {id:"7", answer:"None", by:"", on:"", question:"If others want to extend/augment/build on/contribute to the dataset, is there a mechanism for them to do so?", help:"If so, please provide a description. Will these contributions be validated/verified? If so, please describe how. If not, why not? Is there a process for communicating/distributing these contributions to other users? If so, please provide a description."}},
+{entry: {id:"8", answer:"None", by:"", on:"", question:"Any other comments?", help:"None"}},
+]}},
+],definitions:[{definition:{id:"1",keyword:"ICU",definition:"Intensive Care Unit",link:""}},
+{definition:{id:"2",keyword:"mRS",definition:"modified Rankin Scale",link:""}},
+{definition:{id:"3",keyword:"ICH",definition:"Interacerebral Hemorrhage",link:""}},
+{definition:{id:"4",keyword:"SAH",definition:"Subarachnoid Hemorrhage",link:""}},
+{definition:{id:"5",keyword:"GCS",definition:"Glasgow Coma Scale",link:""}},
+{definition:{id:"6",keyword:"FOUR",definition:"Full Outline of UnResponsiveness ",link:""}},
+{definition:{id:"7",keyword:"CPC",definition:"Cerebral Performance Cathegory",link:""}},
+{definition:{id:"8",keyword:"GOS-E",definition:"Glasgow Outcome Scale Extended",link:""}},
+{definition:{id:"9",keyword:"WFNS",definition:"World Federation of Neurosurgical Surgeons grading",link:""}},
+{definition:{id:"10",keyword:"CTA",definition:"CT angiography",link:""}},
+{definition:{id:"11",keyword:"ASPECT",definition:"Alberta Stroke Program Early CT score",link:""}},
+{definition:{id:"12",keyword:"DSA",definition:"Digital Subtraction Angiography",link:""}},
+{definition:{id:"13",keyword:"TICI",definition:"Thrombolysis In Cerebral Infarction scale",link:""}},
+{definition:{id:"14",keyword:"IVH",definition:"Intraventricular Hemorrhage",link:""}},
+{definition:{id:"15",keyword:"SDH",definition:"Subdural Hemorrhage",link:""}},
+{definition:{id:"16",keyword:"EDH",definition:"Epidural Hemorrhage",link:""}},
+{definition:{id:"17",keyword:"EEG",definition:"Electroencephalography",link:""}},
+{definition:{id:"18",keyword:"STESS",definition:"Status Epilepticus Severity Score",link:""}},
+{definition:{id:"19",keyword:"EMSE",definition:"Epidemiology-based Mortality score in Status Epilepticus ",link:""}},
+{definition:{id:"20",keyword:"ECG",definition:"Electrocardiography",link:""}},
+{definition:{id:"21",keyword:"RASS",definition:"Richmond Agitation-Sedation Scale",link:""}},
+{definition:{id:"22",keyword:"EEG",definition:"Electroencephalography",link:""}},
+{definition:{id:"23",keyword:"MRI",definition:"Magnetic resonans Imaging",link:""}},
+{definition:{id:"24",keyword:"NPi",definition:"Neurological pupil index (normal value > 3, value <3 indicates abnormal pupil reaction)",link:""}},
+{definition:{id:"25",keyword:"ICD-10",definition:"Classification of Diseases version 10",link:""}},
+],subsets:[{subset: {
+id:"1",
+name:"Study ID",
+updated:"Jan-21",
+modality:"Tabular/Flat",
+format:"Redcap (CSV/Excel)",
+size:"104",
+featureCount:"2",
+parentid:"0",
+covmat:"None",
+modsys:"None",
+purpose:"Project ID and date of enrolment",
+link:"None",
+features:[
+{feature: {id:"1",date:"6/25/2019",name:"id",values:"1..inf; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Pseudonymized patient identifier",purpose:"Needed to map this subset to the others.",encoding:"None"}},
+{feature: {id:"2",date:"6/25/2019",name:"date",values:"YYYY-MM-DD",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Date of sampling",purpose:"Investigate longitudinal effect.",encoding:"None"}},
+]}},
+{subset: {
+id:"2",
+name:"Cause of ICU admission",
+updated:"Jan-21",
+modality:"Tabular/Flat",
+format:"Redcap (CSV/Excel)",
+size:"104",
+featureCount:"29",
+parentid:"0",
+covmat:"None",
+modsys:"None",
+purpose:"Describing primary cause of admission, date of admission and date of injury",
+link:"None",
+features:[
+{feature: {id:"3",date:"6/25/2019",name:"date_admission",values:"YYYY-MM-DD",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Date of sampling",purpose:"Investigate longitudinal effect.",encoding:"None"}},
+{feature: {id:"4",date:"6/25/2019",name:"date_injury",values:"YYYY-MM-DD",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Date of sampling",purpose:"Investigate longitudinal effect.",encoding:"None"}},
+{feature: {id:"5",date:"6/25/2019",name:"reason_icu_ad",values:"1..21; integer",meaningNaNullNone:"OTHER; Other medical or surgical diagnose not included in the list",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Underlying diagnosis",purpose:"Etiology of unresponsiveness",encoding:"None"}},
+{feature: {id:"6",date:"6/25/2019",name:"stroke_etiology",values:"1…8; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not ischemic stroke",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Underlying etiology of ischemic stroke",purpose:"Investigate association to prognosis",encoding:"None"}},
+{feature: {id:"7",date:"6/25/2019",name:"stroke_oxford",values:"1…5; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not ischemic stroke",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Classification of stroke type based on CT scan",purpose:"Severity of stroke",encoding:"None"}},
+{feature: {id:"8",date:"6/25/2019",name:"ich_etiology",values:"1…9; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not hemorrhagic stroke",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Underlying etiology of hemorrhagic stroke",purpose:"Investigate association to prognosis",encoding:"None"}},
+{feature: {id:"9",date:"6/25/2019",name:"sah",values:"1…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not SAH",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Underlying etiology of subarachnoid hemorrhage",purpose:"Investigate association to prognosis",encoding:"None"}},
+{feature: {id:"10",date:"6/25/2019",name:"sah_aneurysm",values:"1…10; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not (aneurysmal) SAH",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Type of aneurysm",purpose:"Investigate association to prognosis",encoding:"None"}},
+{feature: {id:"11",date:"6/25/2019",name:"cold_aneurysm",values:"1…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not (aneurysmal) SAH",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Additional cold aneurysms not bleeding actively",purpose:"Investigate association to prognosis",encoding:"None"}},
+{feature: {id:"12",date:"6/25/2019",name:"sah_nonanurysm",values:"1…12; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not SAH",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Type of non aneurysm SAH",purpose:"Investigate association to prognosis",encoding:"None"}},
+{feature: {id:"13",date:"6/25/2019",name:"tbi_mechanism",values:"1…9; integer",meaningNaNullNone:"OTHER; Other mechanisms to head injury not included in the list of frequent causes",meaningZero:"No zeros",meaningBlankVoid:"Not traumatic brain injury",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Underlying cause of TBI based on trauma mechanism",purpose:"Investigate association to prognosis",encoding:"None"}},
+{feature: {id:"14",date:"6/25/2019",name:"tbi_alcohol_drugs",values:"1…5; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not traumatic brain injury",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Drug or alcohol intoxication at time of head injury",purpose:"Investigate association to severity of head injury",encoding:"None"}},
+{feature: {id:"15",date:"6/25/2019",name:"tbi_loc",values:"1…5; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not traumatic brain injury",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Localisation of brain injury based on CT scan",purpose:"Investigate association to severity of head injury",encoding:"None"}},
+{feature: {id:"16",date:"6/25/2019",name:"tbi_pathophysiol",values:"1…16; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not traumatic brain injury",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Pathophysiology of brain injury",purpose:"Investigate association to severity of head injury",encoding:"None"}},
+{feature: {id:"17",date:"6/25/2019",name:"epilepsy_spec_3",values:"1…8; integer",meaningNaNullNone:"OTHER; Other type of epileptic seizure not listed",meaningZero:"No zeros",meaningBlankVoid:"Not epileptic seizure",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Type of seizure",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"18",date:"6/25/2019",name:"aut_encephilitis",values:"1…4; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not autoimmune encephalitis",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Type of encephalitris",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"19",date:"6/25/2019",name:"neuromusc_weak",values:"1…5; integer",meaningNaNullNone:"OTHER: Other myopathy or neuropathy not listed",meaningZero:"No zeros",meaningBlankVoid:"Not neuromuscular weakness",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Type of neuromuscular weakness",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"20",date:"6/25/2019",name:"card_arrest",values:"1…2; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not cardiac arrest",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"In- or out-of-hospital cardiac arrest",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"21",date:"6/25/2019",name:"anoxia_non_cardiac",values:"1…8; integer",meaningNaNullNone:"OTHER: Other cause of anoxia not listed",meaningZero:"No zeros",meaningBlankVoid:"Not non cardiac anoxic brain damage",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Type of anoxic brain damage",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"22",date:"6/25/2019",name:"intox",values:"1…2; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not intoxication as cause of ICU admission",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Accidental or non accidental intoxication",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"23",date:"6/25/2019",name:"ac_intox",values:"1…4; integer",meaningNaNullNone:"OTHER: Other cause of accidental intoxiation not listed",meaningZero:"No zeros",meaningBlankVoid:"Not accidental intoxication as cause of ICU admission",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Type of accidental intoxication",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"24",date:"6/25/2019",name:"self_intox",values:"1…5; integer",meaningNaNullNone:"OTHER: Other cause of selfinflicted intoxiation not listed",meaningZero:"No zeros",meaningBlankVoid:"Not selfinflicted intoxication as cause of ICU admission",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Type of selfinflicted intoxication",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"25",date:"6/25/2019",name:"bact_meningitis",values:"1…6; integer",meaningNaNullNone:"OTHER: Other cause of bacteriel meningitis not listed",meaningZero:"No zeros",meaningBlankVoid:"Not bacteriel meningitis",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Etiology of bacteriel meningitis",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"26",date:"6/25/2019",name:"hsv",values:"yes/No",meaningNaNullNone:"Not possible in format.",meaningZero:"Not PCR verified herpes encephalitis",meaningBlankVoid:"Not herpes encephalitis",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Verification of Herpes encephalitis",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"27",date:"6/25/2019",name:"other_meningoenc",values:"yes/No",meaningNaNullNone:"Not possible in format.",meaningZero:"Not serologically verified other kind of meningoencephalitis",meaningBlankVoid:"Not meningoencephalitis",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Verification of microorganism causing meningoencephalitis",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"28",date:"6/25/2019",name:"inborn_error_of_metabolism",values:"1…4; integer",meaningNaNullNone:"OTHER: Other cause of inborn error of metabolism not listed",meaningZero:"No zeros",meaningBlankVoid:"Not inborn error of metabolism",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Etiology of inborn error of metabolism causing brain injury",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"29",date:"6/25/2019",name:"global_cerebral_edema",values:"1…5; integer",meaningNaNullNone:"OTHER: Other cause of global cerebral edema not listed",meaningZero:"No zeros",meaningBlankVoid:"Not global brain edema",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Cause of global brain edema",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"30",date:"6/25/2019",name:"other_medical_reason",values:"Text description",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not other medical reason for icu admission",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Other medical cause of icu admission ",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"31",date:"6/25/2019",name:"other_surgical_reason",values:"Text description",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not other surgical reason for icu admission",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Other surgical cause of icu admission ",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+]}},
+{subset: {
+id:"3",
+name:"Baseline data at ICU admission",
+updated:"Jan-21",
+modality:"Tabular/Flat",
+format:"Redcap (CSV/Excel)",
+size:"104",
+featureCount:"29",
+parentid:"0",
+covmat:"None",
+modsys:"None",
+purpose:"Demographics (age, sex, previous medical history, previous level of daily function), overall clinical condition at admission (temperature, level of creatinine level of movement, early hypoxia or hypotension)",
+link:"None",
+features:[
+{feature: {id:"32",date:"6/25/2019",name:"sex",values:"1…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Gender; Male, Female or transgender",purpose:"Biological feature",encoding:"None"}},
+{feature: {id:"33",date:"6/25/2019",name:"age",values:"0..inf; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Age since birth at time of admission",purpose:"Biological feature",encoding:"None"}},
+{feature: {id:"34",date:"6/25/2019",name:"temp",values:"0..45; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not available/not recorded",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Body temperature measured at time of admission",purpose:"Basic physiological satte at time of admission",encoding:"None"}},
+{feature: {id:"35",date:"6/25/2019",name:"creat_b",values:"0..1500; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not available/not recorded",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Creatinine level at time of admission measured in plasma",purpose:"Basic physiological satte at time of admission",encoding:"None"}},
+{feature: {id:"36",date:"6/25/2019",name:"mrs_prior",values:"0…6; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"0; No symptoms",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Level of daily function prior to admission based on verified scale",purpose:"Often an important covariate in prognostication",encoding:"None"}},
+{feature: {id:"37",date:"6/25/2019",name:"prev_medical_history",values:"1…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Presence of previous medical history recorded in health records",purpose:"Often an important covariate in prognostication",encoding:"None"}},
+{feature: {id:"38",date:"6/25/2019",name:"prev_med_host_present",values:"1..21; integer",meaningNaNullNone:"OTHER: Other known medical history not listed",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Type of present medical history",purpose:"Often an important covariate in prognostication",encoding:"None"}},
+{feature: {id:"39",date:"6/25/2019",name:"malign",values:"1..18; integer",meaningNaNullNone:"OTHER: Other known history of malignancy not listed",meaningZero:"No zeros",meaningBlankVoid:"No history malignancy",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Type of malignancy according to organs effected",purpose:"May be an important covariate",encoding:"None"}},
+{feature: {id:"40",date:"6/25/2019",name:"prev_neurol_history",values:"1…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Presence of previous neurological history",purpose:"Often an important covariate in prognostication",encoding:"None"}},
+{feature: {id:"41",date:"6/25/2019",name:"prev_neurol_history_yes",values:"1…34; integer",meaningNaNullNone:"OTHER: Other neurological disorder not listed",meaningZero:"No zeros",meaningBlankVoid:"No history history of previous neurological disease",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Type of neurological history",purpose:"Often an important covariate in prognostication",encoding:"None"}},
+{feature: {id:"42",date:"6/25/2019",name:"prev_stroke_territory",values:"1…12; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No history of ishemic stroke",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Territory of stroke",purpose:"Often an important covariate in prognostication",encoding:"None"}},
+{feature: {id:"43",date:"6/25/2019",name:"prev_stroke_etiology",values:"1…8; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No history ischemic stroke",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Underlying etiology of ischemic stroke",purpose:"Often an important covariate in prognostication",encoding:"None"}},
+{feature: {id:"44",date:"6/25/2019",name:"prev_ich_loc",values:"1…7; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No history of ICH",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Localisation of brain hemorrhage",purpose:"Often an important covariate in prognostication",encoding:"None"}},
+{feature: {id:"45",date:"6/25/2019",name:"prev_ich_etiology",values:"1…9; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No history of ICH",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Underlying etiology of hemorrhagic stroke",purpose:"Often an important covariate in prognostication",encoding:"None"}},
+{feature: {id:"46",date:"6/25/2019",name:"prev_sah",values:"1…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No history of SAH",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Underlying etiology of subarachnoid hemorrhage",purpose:"Often an important covariate in prognostication",encoding:"None"}},
+{feature: {id:"47",date:"6/25/2019",name:"prev_stroke_3",values:"1…16; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No history of SAH",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Localisation of aneurysm",purpose:"Often an important covariate in prognostication",encoding:"None"}},
+{feature: {id:"48",date:"6/25/2019",name:"prev_tbi_spec",values:"1…16; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No history traumatic brain injury",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Type of traumatic brain injury",purpose:"Often an important covariate in prognostication",encoding:"None"}},
+{feature: {id:"49",date:"6/25/2019",name:"epilepsy_spec",values:"1…6; integer",meaningNaNullNone:"OTHER; Other type of epileptic seizure not listed, specified i text form",meaningZero:"No zeros",meaningBlankVoid:"No history of epilepsy",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Type of epilepsy",purpose:"May be an important covariate in prognostication",encoding:"None"}},
+{feature: {id:"50",date:"6/25/2019",name:"gcs_motor_pre_hosp_v2",values:"0…6 & 9; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No data available",meaningBlankVoid:"Not available/not recorded",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Level of movement pre hospital",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"51",date:"6/25/2019",name:"gcs_motor_admission_v2",values:"0…6 & 9; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No data available",meaningBlankVoid:"Not available/not recorded",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Level of movement at admission",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"52",date:"6/25/2019",name:"normal_pupil_reactivity_v2",values:"0…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No data available",meaningBlankVoid:"Not available/not recorded",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Pupil reactivity at admission",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"53",date:"6/25/2019",name:"early_hypotension_v2",values:"0…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"Data missing",meaningBlankVoid:"Not available/not recorded",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Presence of hypotension < 90mmHg at or prior to admission",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"54",date:"6/25/2019",name:"early_hypertension",values:"0…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"Data missing",meaningBlankVoid:"Not available/not recorded",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Presence of hypertension > 1800mmHg at or prior to admission",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"55",date:"6/25/2019",name:"late_hypotension",values:"0…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"Data missing",meaningBlankVoid:"Not available/not recorded",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Presence of hypotension < 90mmHg during ICU admission",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"56",date:"6/25/2019",name:"late_hypertension",values:"0…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"Data missing",meaningBlankVoid:"Not available/not recorded",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Presence of hypertension > 1800mmHg during ICU admission",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"57",date:"6/25/2019",name:"early_hypoxia",values:"0…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"Data missing",meaningBlankVoid:"Not available/not recorded",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Presence of hypoxia (SAT < 90%) at or prior to admission",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"58",date:"6/25/2019",name:"late_hypoxia",values:"0…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"Data missing",meaningBlankVoid:"Not available/not recorded",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Presence of hypoxia (SAT < 90%) during ICU admission",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"59",date:"6/25/2019",name:"hunt_and_hess_sah",values:"1..5; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Grading of SAH according to symptoms",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+{feature: {id:"60",date:"6/25/2019",name:"wfns_sah",values:"1..5; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Grading of SAH according to consiousness level measured by GCS",purpose:"Investigate association to prognosis and unresponsiveness",encoding:"None"}},
+]}},
+{subset: {
+id:"4",
+name:"Laboratory investigations",
+updated:"Jan-21",
+modality:"Tabular/Flat",
+format:"Redcap (CSV/Excel)",
+size:"104",
+featureCount:"52",
+parentid:"0",
+covmat:"None",
+modsys:"None",
+purpose:"Describing results of brain scans, X-ray, blood tests, electroencephalography and cerebrospinal fluid tests done during the admission",
+link:"None",
+features:[
+{feature: {id:"61",date:"6/25/2019",name:"ct_brain_n",values:"0…15; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No CT scan available",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Number of scans done",purpose:"Paraclinical information ",encoding:"None"}},
+{feature: {id:"62",date:"6/25/2019",name:"ct_brain_admission",values:"1…28; integer",meaningNaNullNone:"OTHER: Other pathology not listed",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Type of lesion on CT scan of brain",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"63",date:"6/25/2019",name:"ct_brain_admission_anatomy",values:"1…21; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Localisation of leasion ",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"64",date:"6/25/2019",name:"cta_available",values:"0/1",meaningNaNullNone:"Not possible in format.",meaningZero:"No CTA available",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Presence af brain vascular scan",purpose:"Paraclinical information ",encoding:"None"}},
+{feature: {id:"65",date:"6/25/2019",name:"marshall",values:"1…6; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No traumatic brain injury on first CT",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Grading of traumatic brain injury according to features on Ct scan of brain",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"66",date:"6/25/2019",name:"Rotterdam_ct_score",values:"1…6; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No traumatic brain injury on first CT",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Grading of traumatic brain injury according to features on Ct scan of brain",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"67",date:"6/25/2019",name:"stroke_territory",values:"1…12; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of stroke on first CT of brain",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Localisation of ischemic stroke ",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"68",date:"6/25/2019",name:"aspect_score",values:"1…5; ineteger",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of stroke on first CT of brain",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Grading of ischemic stroke according to CT scan features",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"69",date:"6/25/2019",name:"stroke_hemor_score",values:"1…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of stroke on first CT of brain",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Presence of hemorrhagic conformation of ischemic stroke",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"70",date:"6/25/2019",name:"stroke_territory_2",values:"1…12; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of old ischemic strokes on first CT of brain",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Presence of old ischemic strokes on CT",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"71",date:"6/25/2019",name:"cta_occlusion",values:"1..15; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No CTA available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Presence of occlusion or clinically significant stenosis of brain vessels",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"72",date:"6/25/2019",name:"cta_collaterals",values:"1…4; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No CTA available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Level of collateral flow",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"73",date:"6/25/2019",name:"cta_atherosclerotic_burden",values:"1…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No CTA available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Level of atherosclerotic burden on CTA",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"74",date:"6/25/2019",name:"cta_pathology_other",values:"1…10; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No CTA available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Other pathology on CTA",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"75",date:"6/25/2019",name:"dsa",values:"1…4; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No DSA available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Available DSA and reason for performing DSA",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"76",date:"6/25/2019",name:"dsa_TICI",values:"0…4; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"0: No perfusion",meaningBlankVoid:"No DSA available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Grading of reperfusion after endovascular treatment of large vessel occclusion causing stroke",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"77",date:"6/25/2019",name:"ct_venography",values:"0…6; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"0: No cvt performed",meaningBlankVoid:"No CTA available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Localisation of venous sinus thrombosis",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"78",date:"6/25/2019",name:"intracerebral_hemorhage_ty",values:"1 or 2",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of ICH on first CT scan",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Type of ICH (typical versus atypical)",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"79",date:"6/25/2019",name:"ich_location",values:"1…7; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of ICH on first CT scan",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Localisation of ICH on ct scan",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"80",date:"6/25/2019",name:"abc_2_volume_round",values:"0.1…200; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of round ICH on first CT scan",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"CM3",definition:"Volume of round ICH",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"81",date:"6/25/2019",name:"abc_2_volume_irreg",values:"0.1…200; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of round ICH on first CT scan",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"CM3",definition:"Volume of irregular ICH",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"82",date:"6/25/2019",name:"intracerebral_hemorhage_i",values:"0…6; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"0% mortality",meaningBlankVoid:"No sign of ICH on first CT scan",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"ICH score based on patient features and features of ICH (volume, localisation etc.)",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"83",date:"6/25/2019",name:"modified_fisher_scale",values:"0…4; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No sah or IVH",meaningBlankVoid:"No sign of SAH on first CT scan",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"SAH grading predicting risk of complications",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"84",date:"6/25/2019",name:"subdural_hemat_loc",values:"1…4; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of SDH on first CT scan",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Localisation of SDH",purpose:"Paraclinical feature",encoding:"None"}},
+{feature: {id:"85",date:"6/25/2019",name:"subdural_hemat_thick",values:"0.1…200; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of SDH on first CT scan",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"CM",definition:"Thickness of SDH",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"86",date:"6/25/2019",name:"epidural_hemat_loc",values:"1…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of EDH on first CT scan",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Localisation of EDH",purpose:"Paraclinical feature",encoding:"None"}},
+{feature: {id:"87",date:"6/25/2019",name:"epidural_hemat_thick",values:"0.1…200; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of EDH on first CT scan",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"CM",definition:"Thickness of EDH",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"88",date:"6/25/2019",name:"ivh_loc",values:"1…14; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of IVH on first CT scan",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Localisation of IVH",purpose:"Paraclinical feature",encoding:"None"}},
+{feature: {id:"89",date:"6/25/2019",name:"ivh_score",values:"0…23; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of IVH on first CT scan",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Grading of IVH according to localisation and presence of hydrocephalus (high brain pressure)",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"90",date:"6/25/2019",name:"ivh_volume",values:"1.2….99.5; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of IVH on first CT scan",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Volume of Ich based on IVH score",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"91",date:"6/25/2019",name:"diffus_axonal_injury",values:"1…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of DAI on first CT scan",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Severity of shearing leasions on CT",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"92",date:"6/25/2019",name:"cerebral_edema ",values:"1…4; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of cerebral edema on first CT scan",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Localisation of cerebral edema (subcortical focal/diffus vs. Cortical focal/diffus)",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"93",date:"6/25/2019",name:"anoxic_ischemic_injury",values:"1…7; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of anoxic brain injury on first CT scan",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Level of anoxic injury apparent on CT scan",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"94",date:"6/25/2019",name:"ct_midline_shift",values:"0.1….200; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of midline shift on first CT scan",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"mm",definition:"Size opf midline shift on ct scan",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"95",date:"6/25/2019",name:"ct_brain_admission_2",values:"1…28; integer",meaningNaNullNone:"OTHER: Other pathology not listed",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Type of lesion on CT scan of brain",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"96",date:"6/25/2019",name:"marshall_2",values:"1…6; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No traumatic brain injury on last CT",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Grading of traumatic brain injury according to features on Ct scan of brain",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"97",date:"6/25/2019",name:"Rotterdam_ct_score_2",values:"1…6; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No traumatic brain injury on last CT",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Grading of traumatic brain injury according to features on Ct scan of brain",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"98",date:"6/25/2019",name:"new_infarcts_last_ct",values:"0/1",meaningNaNullNone:"Not possible in format.",meaningZero:"No new infarcts compared to first CT",meaningBlankVoid:"Only 1 CT scan available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Presence of new ischemic stroke during admission from first ct scan",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"99",date:"6/25/2019",name:"new_infarcts_territory",values:"1…12; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of stroke on last CT of brain",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Localisation of ischemic stroke ",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"100",date:"6/25/2019",name:"stroke_hemor_trans_2",values:"0/1",meaningNaNullNone:"Not possible in format.",meaningZero:"No hemorhagic transformation on ct scan",meaningBlankVoid:"No sign of stroke on last CT of brain",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Presence of hemorhagic transformation of ischemic stroke on last CT compared to first ct",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"101",date:"6/25/2019",name:"modified_fisher_scale_2",values:"0…4; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No sah or IVH",meaningBlankVoid:"No sign of SAH on last CT scan",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"SAH grading predicting risk of complications",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"102",date:"6/25/2019",name:"eeg_n",values:"0…15; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No eeg available prior to index EEG",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Number of EEGs done during ICU aqdmission",purpose:"Paraclinical test",encoding:"None"}},
+{feature: {id:"103",date:"6/25/2019",name:"first_eeg",values:"1…18; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No EEG available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"EEG features as described by a certified neurophysiologist",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"104",date:"6/25/2019",name:"first_eeg_reactivity",values:"1…8; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No EEG available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"EEG apparent reaction to different stimulies as described",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"105",date:"6/25/2019",name:"stess_score_nindex",values:"0…6; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No sign of status epilepticus",meaningBlankVoid:"No sign of status epilepticus on first EEG",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Severity of status epilepticus based on defferent features",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"106",date:"6/25/2019",name:"emse_eeg_nindex",values:"1…195; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of status epilepticus on first EEG",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Risk of mortality based on epidemiological features in patients with status epilepticus",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"107",date:"6/25/2019",name:"last_eeg",values:"1…18; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"<=1 EEG available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"EEG features as described by a certified neurophysiologist",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"108",date:"6/25/2019",name:"last_eeg_reactivity",values:"1…8; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"<=1 EEG available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"EEG apparent reaction to different stimulies as described",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"109",date:"6/25/2019",name:"csf_analysis_specify",values:"1…6; integer",meaningNaNullNone:"OTHER cause for abnormal csf not listet",meaningZero:"No zeros",meaningBlankVoid:"No abnormal csf analysis",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Cause of abnormal csf tests",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"110",date:"6/25/2019",name:"chest_x_ray",values:"1…8; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No chest x-ray available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Features of chest x-ray described by radiologist",purpose:"Paraclinical feature",encoding:"None"}},
+{feature: {id:"111",date:"6/25/2019",name:"ecg",values:"1…5; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No ecg available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Features of ECG",purpose:"Paraclinical feature",encoding:"None"}},
+{feature: {id:"112",date:"6/25/2019",name:"blod_tests",values:"1…9; integer",meaningNaNullNone:"Other abnormalities not listed",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Abnormal blodd tests according to organ systems (e.g. lever tests, hematology etc.)",purpose:"Paraclinical feature",encoding:"None"}},
+]}},
+{subset: {
+id:"5",
+name:"Neurological exam at inclusion",
+updated:"Jan-21",
+modality:"Tabular/Flat",
+format:"Redcap (CSV/Excel)",
+size:"104",
+featureCount:"16",
+parentid:"0",
+covmat:"None",
+modsys:"None",
+purpose:"Clinical neurological exams with testing of brainstem reflexes, motor output, consioussness level from a clinical point of view, reaction to stimulies like pain, voice etc. ",
+link:"None",
+features:[
+{feature: {id:"113",date:"6/25/2019",name:"date_examination",values:"YYYY-MM-DD",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Date of index neurological examination",purpose:"Investigate longitudinal effect.",encoding:"None"}},
+{feature: {id:"114",date:"6/25/2019",name:"time_examination",values:"H:M",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Time of index neurological examination",purpose:"Investigate longitudinal effect.",encoding:"None"}},
+{feature: {id:"115",date:"6/25/2019",name:"sedation",values:"1…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Was the patient sedated at time of examination",purpose:"Important covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"116",date:"6/25/2019",name:"Sedative_drugs",values:"1…10; integer",meaningNaNullNone:"Other drugs than listed",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Name of sedative drug",purpose:"Important covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"117",date:"6/25/2019",name:"Sedative_drugs_dosage",values:"0.1…300; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"mg or ug",definition:"Dosage of sedative drug",purpose:"Important covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"118",date:"6/25/2019",name:"rass",values:"1…12; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Level of sedation based on clinical features",purpose:"Important covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"119",date:"6/25/2019",name:"brainstem_reflexes",values:"1…4; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Presence/absence of 39 brainstem features",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"120",date:"6/25/2019",name:"four_score_final",values:"0…16; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"0: No brainstem reflexes, spontaneous respiration, motor output or eye movement.",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Verified score for evaluating level of concsioussnes in ICU patients based on score from 4 different features",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"121",date:"6/25/2019",name:"intubation",values:"1 or 2",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not intubated",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Orally intubated or tracheostomized",purpose:"Clinical feature",encoding:"None"}},
+{feature: {id:"122",date:"6/25/2019",name:"gcs_score_final",values:"3…15; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Verified score for evaluating level of concsioussnes in patients with disorders of concsioussness based on score from 3 different features",purpose:"Prognostic feature",encoding:"Prognostic feature"}},
+{feature: {id:"123",date:"6/25/2019",name:"command_following_consistent",values:"1…4; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Consistent presence of 5 command following features (e.g. blinking, gaze, visuel pusuit, nect/facial movement or limb movement)",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"124",date:"6/25/2019",name:"command_following_inconsistent",values:"1…4; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Inconsistent presence of 5 command following features (e.g. blinking, gaze, visuel pusuit, nect/facial movement or limb movement)",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"125",date:"6/25/2019",name:"spontaneous_motor_behavior_inconsistent",values:"1…4; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Spontaneous behavious scored by 8 different clinical features",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"126",date:"6/25/2019",name:"nociception_final_score",values:"0…9; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"0: no reaction to pain",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Reaction to pain stimulies",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"127",date:"6/25/2019",name:"overall_the_degree_of_cons",values:"1…9; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Final level of concsioussness based on all the clinical features ",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"128",date:"6/25/2019",name:"treatment_level_1",values:"1…5; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Restriction to treatment level ",purpose:"Prognostic feature",encoding:"None"}},
+]}},
+{subset: {
+id:"6",
+name:"MRI ",
+updated:"Jan-21",
+modality:"Tabular/Flat",
+format:"Redcap (CSV/Excel)",
+size:"104",
+featureCount:"21",
+parentid:"0",
+covmat:"None",
+modsys:"None",
+purpose:"Describing structural MRI of brain with sites of lesion, form of lesions (hemmorhage, ischemia, diffus contusion etc.), which sequences were done and final conclusion of the scan described by a radiologist",
+link:"None",
+features:[
+{feature: {id:"129",date:"6/25/2019",name:"date_mri",values:"YYYY-MM-DD",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Date of index mri",purpose:"Logitudinel data",encoding:"None"}},
+{feature: {id:"130",date:"6/25/2019",name:"mri_field_strength",values:"1…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Quality of MRI (1.5 , 3 tesla or unknown)",purpose:"Quality control of exam",encoding:"None"}},
+{feature: {id:"131",date:"6/25/2019",name:"mri_sequences",values:"1…10; integer",meaningNaNullNone:"Other specific sequences than listed",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Different radiologically predefined sequences adding different information about brain structure",purpose:"Quality control of exam",encoding:"None"}},
+{feature: {id:"132",date:"6/25/2019",name:"mri_diagnosis",values:"1…25; integer",meaningNaNullNone:"Other diagnosis than listed",meaningZero:"No zeros",meaningBlankVoid:"Major artefacts effecting mri interpretation",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Radiological diagnosis",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"133",date:"6/25/2019",name:"mri_anatomy",values:"1…21; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Major artefacts effecting mri interpretation",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Lesion to specific brain sites",purpose:"Prognostic feature especially coupled to concsioussness level",encoding:"None"}},
+{feature: {id:"134",date:"6/25/2019",name:"stroke_territory_mri",values:"1…11; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No stroke evident on MRI",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Territory of ischemic stroke according to main cerebral vessels",purpose:"Prognostic feature ",encoding:"None"}},
+{feature: {id:"135",date:"6/25/2019",name:"new_infarcts_mri",values:"0/1",meaningNaNullNone:"Not possible in format.",meaningZero:"0 = No",meaningBlankVoid:"Major artefacts effecting mri interpretation",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Evidence of new infarcts om mri compared to last CT",purpose:"Prognostic feature ",encoding:"None"}},
+{feature: {id:"136",date:"6/25/2019",name:"stroke_hemor_trans_3",values:"0/1",meaningNaNullNone:"Not possible in format.",meaningZero:"0 = No",meaningBlankVoid:"No stroke evident on MRI",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Evidence of hemorrhagic transformation of infarct",purpose:"Prognostic feature ",encoding:"None"}},
+{feature: {id:"137",date:"6/25/2019",name:"stroke_territory_4",values:"1…11; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No old ischemic stroke evident on MRI",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Territory of old ischemic stroke according to main cerebral vessels",purpose:"Prognostic feature ",encoding:"None"}},
+{feature: {id:"138",date:"6/25/2019",name:"mr_angio_occlusion",values:"1…15; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No MRI angiography available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Territory of large vessel occlusion or cliniccaly significant stenosis",purpose:"Prognostic feature - disease burden",encoding:"None"}},
+{feature: {id:"139",date:"6/25/2019",name:"mr_angio_other_pathology",values:"1…12; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No MRI angiography available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Other vessel disease not including occlusion or stenosis",purpose:"Prognostic feature - disease burden",encoding:"None"}},
+{feature: {id:"140",date:"6/25/2019",name:"mr_venography",values:"1…6; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No MRI venography available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Venous thrombosis or other venous disease",purpose:"Prognostic feature - disease burden",encoding:"None"}},
+{feature: {id:"141",date:"6/25/2019",name:"ich_location_2",values:"1…10; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No ICH evident on mri",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Location of ich",purpose:"Prognostic feature especially coupled to concsioussness level",encoding:"None"}},
+{feature: {id:"142",date:"6/25/2019",name:"subdural_hemat_loc_2",values:"1…4; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of SDH on mri",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Localisation of SDH",purpose:"Paraclinical feature",encoding:"None"}},
+{feature: {id:"143",date:"6/25/2019",name:"subdural_hemat_thick_2",values:"0.1…200; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of SDH on mri",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"CM",definition:"Thickness of SDH",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"144",date:"6/25/2019",name:"epidural_hemat_loc_2",values:"1…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of EDH on mri",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Localisation of EDH",purpose:"Paraclinical feature",encoding:"None"}},
+{feature: {id:"145",date:"6/25/2019",name:"epidural_hemat_thick_2",values:"0.1…200; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of EDH on mri",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"CM",definition:"Thickness of EDH",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"146",date:"6/25/2019",name:"diffus_axonal_injury_2",values:"1…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of DAI on mri",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Severity of shearing leasions on mri",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"147",date:"6/25/2019",name:"cerebral_edema_2",values:"1…4; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of cerebral edema mri",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Localisation of cerebral edema (subcortical focal/diffus vs. Cortical focal/diffus)",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"148",date:"6/25/2019",name:"anoxic_ischemic_injury_2",values:"1…7; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of anoxic brain injury mri",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Level of anoxic injury apparent on mri",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"149",date:"6/25/2019",name:"midline_shift_mri",values:"0.1….200; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of midline shift on mri",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"mm",definition:"Size opf midline shift on mri",purpose:"Prognostic feature",encoding:"None"}},
+]}},
+{subset: {
+id:"7",
+name:"EEG",
+updated:"Jan-21",
+modality:"Tabular/Flat",
+format:"Redcap (CSV/Excel)",
+size:"104",
+featureCount:"5",
+parentid:"0",
+covmat:"None",
+modsys:"None",
+purpose:"Describing brain derived electrical signals measured by surface electrodes and response to different stimuli. ",
+link:"https://www.mayoclinic.org/tests-procedures/eeg/about/pac-20393875",
+features:[
+{feature: {id:"150",date:"6/25/2019",name:"date_eeg",values:"YYYY-MM-DD",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Date of index eeg",purpose:"Logitudinel data",encoding:"None"}},
+{feature: {id:"151",date:"6/25/2019",name:"index_eeg_baseline",values:"1…18; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No EEG available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"EEG features as described by a certified neurophysiologist",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"152",date:"6/25/2019",name:"stess_score",values:"0…6; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No sign of status epilepticus",meaningBlankVoid:"No sign of status epilepticus on index EEG",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Severity of status epilepticus based on different features",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"153",date:"6/25/2019",name:"emse_eeg",values:"1…195; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of status epilepticus on index EEG",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Risk of mortality based on epidemiological features in patients with status epilepticus",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"154",date:"6/25/2019",name:"eeg_reactivity",values:"1…7; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No sign of status epilepticus on index EEG",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"EEG apparent reaction to different stimulies as described",purpose:"Prognostic feature",encoding:"None"}},
+]}},
+{subset: {
+id:"8",
+name:"Pupillometry",
+updated:"Jan-21",
+modality:"Tabular/Flat",
+format:"Redcap (CSV/Excel)",
+size:"104",
+featureCount:"18",
+parentid:"0",
+covmat:"None",
+modsys:"None",
+purpose:"Descriping pupil characteristics (size, difference between the two pupils etc) and response to light",
+link:"None",
+features:[
+{feature: {id:"155",date:"6/25/2019",name:"date_pupillometry",values:"YYYY-MM-DD",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No pupillometry available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Date of index pupillometry",purpose:"Logitudinel data",encoding:"None"}},
+{feature: {id:"156",date:"6/25/2019",name:"sedative_pupillometry",values:"1…10; integer",meaningNaNullNone:"Other drugs than listed",meaningZero:"No zeros",meaningBlankVoid:"No pupillometry available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Name of sedative drug during pupillometry",purpose:"Covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"157",date:"6/25/2019",name:"npi_right",values:"0…5; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No reaction",meaningBlankVoid:"No pupillometry available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Neurological pupil index based on pupil reaction to light",purpose:"Covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"158",date:"6/25/2019",name:"npi_left",values:"0…5; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No reaction",meaningBlankVoid:"No pupillometry available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Neurological pupil index based on pupil reaction to light",purpose:"Covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"159",date:"6/25/2019",name:"pupil_size_right",values:"0,1…20; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No pupillometry available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"mm",definition:"Pupil size",purpose:"Covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"160",date:"6/25/2019",name:"pupil_size_left",values:"0,1…20; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No pupillometry available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"mm",definition:"Pupil size",purpose:"Covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"161",date:"6/25/2019",name:"pupil_right_min",values:"0,1…20; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No pupillometry available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"mm",definition:"Minimum pupil size right",purpose:"Covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"162",date:"6/25/2019",name:"pupil_left_min",values:"0,1…20; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"No pupillometry available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"mm",definition:"Minimum pupil size left",purpose:"Covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"163",date:"6/25/2019",name:"ch_right",values:"0…100; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No change",meaningBlankVoid:"No pupillometry available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"%",definition:"Percentage of change in pupil size due to reaction to light, right side",purpose:"Covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"164",date:"6/25/2019",name:"ch_left",values:"0…100; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No change",meaningBlankVoid:"No pupillometry available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"%",definition:"Percentage of change in pupil size due to reaction to light, left side",purpose:"Covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"165",date:"6/25/2019",name:"const_velocity_right",values:"0…10; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No constriction",meaningBlankVoid:"No pupillometry available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"mm/sec",definition:"Constriction velocity, right",purpose:"Covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"166",date:"6/25/2019",name:"const_velocity_left",values:"0…10; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No constriction",meaningBlankVoid:"No pupillometry available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"mm/sec",definition:"Constriction velocity, left",purpose:"Covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"167",date:"6/25/2019",name:"max_const_velocity_right",values:"0…10; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No constriction",meaningBlankVoid:"No pupillometry available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"mm/sec",definition:"Maximum constriction velocity, right",purpose:"Covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"168",date:"6/25/2019",name:"max_const_velocity_left",values:"0…10; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No constriction",meaningBlankVoid:"No pupillometry available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"mm/sec",definition:"maximum constriction velocity, left",purpose:"Covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"169",date:"6/25/2019",name:"latency_right",values:"0…10; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No latency",meaningBlankVoid:"No pupillometry available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"sec",definition:"Latency to light reaction, right",purpose:"Covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"170",date:"6/25/2019",name:"latency_left",values:"0…10; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No latency",meaningBlankVoid:"No pupillometry available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"sec",definition:"Latency to light reaction, left",purpose:"Covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"171",date:"6/25/2019",name:"dilatation_velocity_right",values:"0…10; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No dilatation",meaningBlankVoid:"No pupillometry available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"mm/sec",definition:"Dilatation velocity, right",purpose:"Covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"172",date:"6/25/2019",name:"dilatation_velocity_left",values:"0…10; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No dilatation",meaningBlankVoid:"No pupillometry available",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"mm/sec",definition:"Dilatation velocity, left",purpose:"Covariate when examining level of conscioussness ",encoding:"None"}},
+]}},
+{subset: {
+id:"9",
+name:"Neurological exam at ICU discharge",
+updated:"Jan-21",
+modality:"Tabular/Flat",
+format:"Redcap (CSV/Excel)",
+size:"104",
+featureCount:"20",
+parentid:"0",
+covmat:"None",
+modsys:"None",
+purpose:"Clinical neurological features and conscioussnes level at time of discharge. Cause and date of death if patients die during ICU admission. Final diagnosis. ",
+link:"None",
+features:[
+{feature: {id:"173",date:"6/25/2019",name:"date_examination_v2",values:"YYYY-MM-DD",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Date of neurological examination at discharge from ICU or prior to death in ICU",purpose:"Logitudinel data",encoding:"None"}},
+{feature: {id:"175",date:"6/25/2019",name:"time_examination_v2",values:"H:M",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Time of discharge neurological examination",purpose:"Investigate longitudinal effect.",encoding:"None"}},
+{feature: {id:"174",date:"6/25/2019",name:"treatment_level_2",values:"1…5; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Restriction to treatment level ",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"176",date:"6/25/2019",name:"sedation_v2",values:"1…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Was the patient sedated at time of examination",purpose:"Important covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"177",date:"6/25/2019",name:"Sedative_drugs_v2",values:"1…10; integer",meaningNaNullNone:"Other drugs than listed",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Name of sedative drug",purpose:"Important covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"178",date:"6/25/2019",name:"Sedative_drugs_dosage_v2",values:"0.1…300; real",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"mg or ug",definition:"Dosage of sedative drug",purpose:"Important covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"179",date:"6/25/2019",name:"rass_v2",values:"1…12; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Level of sedation based on clinical features",purpose:"Important covariate when examining level of conscioussness ",encoding:"None"}},
+{feature: {id:"180",date:"6/25/2019",name:"brainstem_reflexes_v2",values:"1…4; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Presence/absence of 39 brainstem features",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"181",date:"6/25/2019",name:"four_score_final_v2",values:"0…16; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"0: No brainstem reflexes, spontaneous respiration, motor output or eye movement.",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Verified score for evaluating level of concsioussnes in ICU patients based on score from 4 different features",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"182",date:"6/25/2019",name:"intubation_discharge",values:"1 or 2",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not intubated",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Orally intubated or tracheostomized",purpose:"Clinical feature",encoding:"None"}},
+{feature: {id:"183",date:"6/25/2019",name:"gcs_score_final_v2",values:"3…15; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Verified score for evaluating level of concsioussnes in patients with disorders of concsioussness based on score from 3 different features",purpose:"Prognostic feature",encoding:"Prognostic feature"}},
+{feature: {id:"184",date:"6/25/2019",name:"command_following_consistent_v2",values:"1…4; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Consistent presence of 5 command following features (e.g. blinking, gaze, visuel pusuit, nect/facial movement or limb movement)",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"185",date:"6/25/2019",name:"command_following_inconsistent_v2",values:"1…4; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Inconsistent presence of 5 command following features (e.g. blinking, gaze, visuel pusuit, nect/facial movement or limb movement)",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"186",date:"6/25/2019",name:"spontaneous_motor_behavior_inconsistent_v2",values:"1…4; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Spontaneous behavious scored by 8 different clinical features",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"187",date:"6/25/2019",name:"nociception_final_score_v2",values:"0…9; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"0: no reaction to pain",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Reaction to pain stimulies",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"188",date:"6/25/2019",name:"overall_the_degree_of_cons_v2",values:"1…9; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Final level of concsioussness based on all the clinical features ",purpose:"Prognostic feature",encoding:"None"}},
+{feature: {id:"189",date:"6/25/2019",name:"discharge_date_4",values:"YYYY-MM-DD",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Date of hospitalk discharge",purpose:"Logitudinel data",encoding:"None"}},
+{feature: {id:"190",date:"6/25/2019",name:"patient_dead_alive",values:"0/1",meaningNaNullNone:"Not possible in format.",meaningZero:"0 = no",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Is the patient discharged alive from ICU",purpose:"Mortality",encoding:"None"}},
+{feature: {id:"191",date:"6/25/2019",name:"cause_of_death",values:"1…6; integer",meaningNaNullNone:"Other cause than listed",meaningZero:"No zeros",meaningBlankVoid:"Not dead",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Cause of death",purpose:"Mortality",encoding:"None"}},
+{feature: {id:"192",date:"6/25/2019",name:"final_diagnosis",values:"Diagnose code based on ICD-10",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Etiology of admission",purpose:"Prognostic",encoding:"Validated diagnose codes based on ICD-10"}},
+]}},
+{subset: {
+id:"10",
+name:"3-month follow-up",
+updated:"Jan-21",
+modality:"Tabular/Flat",
+format:"Redcap (CSV/Excel)",
+size:"104",
+featureCount:"8",
+parentid:"0",
+covmat:"None",
+modsys:"None",
+purpose:"Description of daily function regained and level of indepency after admission at 3 months described by 3 different scales (CPC, GOS-E and mRS)",
+link:"https://www.ivr-ias.ch/wp-content/uploads/2020/06/CPC_Scale.pdf; https://manual.jointcommission.org/releases/TJC2018A/DataElem0569.html; https://brohaut.github.io/2017/Post_GOS-E/",
+features:[
+{feature: {id:"193",date:"6/25/2019",name:"date_at_follow_up_3mo",values:"YYYY-MM-DD",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Date of 3 month followup",purpose:"Logitudinel data",encoding:"None"}},
+{feature: {id:"194",date:"6/25/2019",name:"time_examination_3mo",values:"H:M",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Time of 3 month followup",purpose:"Logitudinel data",encoding:"None"}},
+{feature: {id:"195",date:"6/25/2019",name:"hospitalized_3mo",values:"0/1",meaningNaNullNone:"Not possible in format.",meaningZero:"0 = no",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Hospitalization since discharge and follow-up",purpose:"Covariate which may effect folowup clinical status",encoding:"None"}},
+{feature: {id:"196",date:"6/25/2019",name:"hospitalization_cause_3mo",values:"1…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Cause of hospitalization (related or unrelated to admission cause)",purpose:"Specification of other factor modifying follow up status",encoding:"None"}},
+{feature: {id:"197",date:"6/25/2019",name:"cpc_3months",values:"1…5; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Clinical staus at 3 month",purpose:"Cerebral outcome",encoding:"None"}},
+{feature: {id:"198",date:"6/25/2019",name:"mrs_3mo",values:"1…6;integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Level of function according to mRS at 3 months",purpose:"functional outcome at 3 months",encoding:"None"}},
+{feature: {id:"199",date:"6/25/2019",name:"gose_scoring_3mo",values:"1…8; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Level of function according to GOS-E at 3 months",purpose:"functional outcome at 3 months",encoding:"None"}},
+{feature: {id:"200",date:"6/25/2019",name:"overall_the_degree_of_cons_2",values:"1…10; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Level of concsioussness ar 3 months",purpose:"Concsioussness level at 3 months",encoding:"None"}},
+]}},
+{subset: {
+id:"11",
+name:"12-month follow-up",
+updated:"Jan-21",
+modality:"Tabular/Flat",
+format:"Redcap (CSV/Excel)",
+size:"104",
+featureCount:"8",
+parentid:"0",
+covmat:"None",
+modsys:"None",
+purpose:"Description of daily function regained and level of indepency after admission at 12 months described by 3 different scales (CPC, GOS-E and mRS)",
+link:"https://www.ivr-ias.ch/wp-content/uploads/2020/06/CPC_Scale.pdf; https://manual.jointcommission.org/releases/TJC2018A/DataElem0569.html; https://brohaut.github.io/2017/Post_GOS-E/",
+features:[
+{feature: {id:"201",date:"6/25/2019",name:"date_at_follow_up_12mo",values:"YYYY-MM-DD",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Date of 12 month followup",purpose:"Logitudinel data",encoding:"None"}},
+{feature: {id:"202",date:"6/25/2019",name:"time_examination_12mo",values:"H:M",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Time of 12 month follow-up",purpose:"Logitudinel data",encoding:"None"}},
+{feature: {id:"203",date:"6/25/2019",name:"hospitalized_12mo",values:"0/1",meaningNaNullNone:"Not possible in format.",meaningZero:"0 = no",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Hospitalization since 3 and 12 month follow-up",purpose:"Covariate which may effect folowup clinical status",encoding:"None"}},
+{feature: {id:"204",date:"6/25/2019",name:"hospitalization_cause_12mo",values:"1…3; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Cause of hospitalization (related or unrelated to admission cause)",purpose:"Specification of other factor modifying follow up status",encoding:"None"}},
+{feature: {id:"205",date:"6/25/2019",name:"cpc_12months",values:"1…5; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Clinical staus at 12 month",purpose:"Cerebral outcome",encoding:"None"}},
+{feature: {id:"206",date:"6/25/2019",name:"mrs_12mo",values:"1…6;integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Level of function according to mRS at 12 months",purpose:"functional outcome at 3 months",encoding:"None"}},
+{feature: {id:"207",date:"6/25/2019",name:"gose_scoring_12mo",values:"1…8; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Level of function according to GOS-E at 12 months",purpose:"functional outcome at 3 months",encoding:"None"}},
+{feature: {id:"208",date:"6/25/2019",name:"overall_the_degree_of_cons_3",values:"1…10; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Level of concsioussness ar 12 months",purpose:"Concsioussness level at 3 months",encoding:"None"}},
+]}},
+] })
 
         document.getElementById("emptyHandle").innerHTML += filledHandle;
-    </script>
-    <script src="./js/collapse.js">
-    </script>
-</body>
-
+  </script>
+  <script src="./js/collapse.js">
+  </script>
+ </body>
 </html>
