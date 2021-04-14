@@ -1,0 +1,214 @@
+<!-- Edit the answers below to describe your dataset -->
+<!-- Do not change questions as these are defined by the MAIDS specification -->
+<root name="ABOUT">
+    <title>
+        <question>What is the title of your dataset?</question>
+        <answer>Consciousness in neurocritical care cohort study</answer>
+    </title>
+    <repository>
+        <question>What is the URL of the repository for this MAIDS description on Github?</question>
+        <answer>https://github.com/UltrathonOnline/MAIDS.U21-03.Consciousness</answer>
+    </repository>
+    <authors>
+        <question>Who are the dataset's authors?</question>
+        <answer>
+            <author_1>
+                <!-- Primary contact that must always be specified -->
+                <firstnames>Daniel</firstnames>
+                <lastname>Kondziella</lastname>
+                <email>Daniel.kondziella@regionh.dk</email>
+            </author_1>
+            <author_2>
+                <firstnames>Moshgan</firstnames>
+                <lastname>Amiri</lastname>
+                <email>Moshgan.amiri@regionh.dk</email>
+            </author_2>
+        </answer>
+    </authors>
+    <scores>
+        <document>
+            <score>
+                <question>What is the document score, as defined by MAIDS?</question>
+                <answer>1</answer>
+            </score>
+            <comment>
+                <question>Why was this score given? Provide a full justification.</question>
+                <answer />
+            </comment>
+            <evaluator>
+                <entityType>
+                    <question>What gave the score? [algorithm / group / committee / person]</question>
+                    <answer />
+                </entityType>
+                <entityName>
+                    <question>Name of algorithm / group / committee / person who gave the score?</question>
+                    <answer />
+                </entityName>
+                <contactName>
+                    <question>Who should be contacted to query the score?</question>
+                    <answer />
+                </contactName>
+                <contactEmail>
+                    <question>What is the contact person's email address?</question>
+                    <answer />
+                </contactEmail>
+            </evaluator>
+        </document>
+        <fairness>
+            <score>
+                <question>What is the fairness score given, as defined by MAIDS?</question>
+                <answer>?</answer>
+            </score>
+            <comment>
+                <question>Why was this score given? Provide a full justification.</question>
+                <answer />
+            </comment>
+            <evaluator>
+                <entityType>
+                    <question>What gave the score? [algorithm / group / committee / person]</question>
+                    <answer />
+                </entityType>
+                <entityName>
+                    <question>Name of algorithm / group / committee / person who gave the score?</question>
+                    <answer />
+                </entityName>
+                <contactName>
+                    <question>Who should be contacted to query the score?</question>
+                    <answer />
+                </contactName>
+                <contactEmail>
+                    <question>What is the contact person's email address?</question>
+                    <answer />
+                </contactEmail>
+            </evaluator>
+        </fairness>
+        <magnitude>
+            <score>
+                <question>What is the magnitude score given, as defined by MAIDS?</question>
+                <answer>2</answer>
+            </score>
+            <comment>
+                <question>Why was this score given? Provide a full justification.</question>
+                <answer />
+            </comment>
+            <evaluator>
+                <entityType>
+                    <question>What gave the score? [algorithm / group / committee / person]</question>
+                    <answer />
+                </entityType>
+                <entityName>
+                    <question>Name of algorithm / group / committee / person who gave the score?</question>
+                    <answer />
+                </entityName>
+                <contactName>
+                    <question>Who should be contacted to query the score?</question>
+                    <answer />
+                </contactName>
+                <contactEmail>
+                    <question>What is the contact person's email address?</question>
+                    <answer />
+                </contactEmail>
+            </evaluator>
+        </magnitude>
+        <synthetic>
+            <score>
+                <question>What is the synthetic score given, as defined by MAIDS?</question>
+                <answer>E</answer>
+            </score>
+            <comment>
+                <question>Why was this score given? Provide a full justification.</question>
+                <answer />
+            </comment>
+            <evaluator>
+                <entityType>
+                    <question>What gave the score? [algorithm / group / committee / person]</question>
+                    <answer />
+                </entityType>
+                <entityName>
+                    <question>Name of algorithm / group / committee / person who gave the score?</question>
+                    <answer />
+                </entityName>
+                <contactName>
+                    <question>Who should be contacted to query the score?</question>
+                    <answer />
+                </contactName>
+                <contactEmail>
+                    <question>What is the contact person's email address?</question>
+                    <answer />
+                </contactEmail>
+            </evaluator>
+        </synthetic>
+    </scores>
+    <thematic>
+        <filename>thematic.jpg</filename>
+    </thematic>
+    <abstract>
+        <question>Please provide a brief abstract describing this dataset.</question>
+        <answer>Research on consciousness is mainly based on patients suffering from chronic brain injury, while data regarding unresponsive patients with acute brain injury are sparse. As mentioned in the previous section, most deaths in an ICU population occur because of withdrawal of life-sustaining therapy. Reducing the risk for erroneous clinical prognostication is therefore crucial. There is a gap between the research on chronic patients and research based on unresponsive patients suffering from acute brain injury in the ICU. We established our database to be able to fill this gap. Our dataset was hence created to obtain a representative prospective database with systematic registration of clinical, laboratory and imaging data of unresponsive patients suffering from acute brain injury. The main purpose of the database is to identify important information predicting level of consciousness and outcome (acute and long-term) in these patients, which will help to optimize clinical decision-making.</answer>
+    </abstract>
+    <usecases>
+        <question>Please provide one or more short use cases to highlight what this dataset might be used for. These should summarise the main and secondary research questions into single sentence objectives. You may also use this section to expand on possible uses not discussed in the research questions.</question>
+        <answer>
+            <usecase_1 />
+        </answer>
+    </usecases>
+    <research>
+        <main>
+            <question>Please state, in detail, the main hypothesis for which this dataset was created.</question>
+            <answer>After acute brain injury, recovery of consciousness is the single most important factor for clinical outcome. Consciousness levels in clinically unresponsive patients are misdiagnosed in 15-20%, i.e. consciousness may be under- or overestimated, which has negative effects on clinical decision making in the intensive care unit (ICU). Thus, underestimation may lead to premature withdrawal of life-supporting therapy, whereas overestimation may lead to prolongation of futile treatment. Given that 7 out of 10 deaths in the ICU occur because of treatment withdrawal, accurate estimation of consciousness is crucial to save patients from poor medical decision making. Since 2015, we have systematically and rigorously registered data regarding clinical neurological exam (including detailed scoring of consciousness levels), laboratory investigations including structural brains scans (computed tomography and magnetic resonance imaging), electroencephalography (EEG), cerebrospinal fluid samples and other relevant exams during ICU admission. Furthermore, to obtain information on recovery after acute brain injury, we registered follow-up data at 3- and 12 months according to modified Rankin scale (mRS) and Glasgow outcome scale extended (GOS-E), or alternatively, the cause of death during ICU admission. As of January 2021, we have included 104 patients. Follow-up data at 3- and 12 months are available from 78 and 70 patients, respectively.</answer>
+        </main>
+        <secondary>
+            <question>Please state, in detail, any other hypotheses which this dataset would be able to address.</question>
+            <answer>1) Can machine learning algorithms recognize common signatures indicating good or poor outcome during ICU admission, in an inhomogeneous group of patients with acute brain injury, based on clinical and laboratory features which are missed by clinical routine evaluation?; 2)  Can machine learning algorithms assist clinicians in a more accurate decision-making regarding end-of-life decisions in the ICU?; 3)  Can machine learning algorithms predict outcome in unresponsive patients with acute brain injury at ICU discharge and 3 and 12 months later?; 4) Is there a subset of unresponsive patients with acute brain injury for whom AI evaluation is particularly helpful?; 5) Will such algorithms be a convenient and cost-efficient for the detection of preserved consciousness, prognostication and treatment of patients with acute brain injury?</answer>
+        </secondary>
+    </research>
+    <figures>
+        <question>Please entitle and provide a legend for each figure found in "./images/figures/".</question>
+        <answer>
+            <!-- Template: <figure_1><filename /><title /><legend /></figure_1> -->
+            <figure_1>
+                <filename>Picture1.jpg</filename>
+                <title>Patient flow from enrollment through follow up</title>
+                <legend>Patients (n=104) are included with measured clinical conscious score.</legend>
+            </figure_1>
+        </answer>
+    </figures>
+    <subsetAssociations>
+        <filename>subset.jpg</filename>
+        <legend>
+            <question>What is the legend for the figure describing how subsets are associated to one another?</question>
+            <answer>Eleven subsets linked by a pseudonymized patient identifier.</answer>
+        </legend>
+    </subsetAssociations>
+    <populationSelection>
+        <rootNode>
+            <nodeid>0</nodeid> <!-- Do not change. Use nodeids as reference points. -->
+            <name />
+            <description />
+            <sources>
+                <!-- INSERT TEMPLATE SOURCES HERE  -->
+            </sources>
+        </rootNode>
+        <!-- INSERT TEMPLATE NODES HERE AND REFERENCE THEIR PARENTS -->
+    </populationSelection>
+</root>
+
+<!-- NODE TEMPLATES FOR DEFINING THE POPULATION SELECTION GRAPH 
+<node>
+    <nodeid />
+    <name />
+    <description />
+    <location />
+</node>
+
+<source>
+    <entityName />
+    <entityAddress />
+    <contactPerson />
+    <contactEmail />
+    <dataDescription />
+    <instancesContributed />
+    <beginDateCollection />
+    <endDateCollection />
+</source>
+-->
